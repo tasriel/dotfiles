@@ -120,3 +120,6 @@ export NVM_DIR="$HOME/.nvm"
 if [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
+
+# remove green background color (for wsl)
+export LS_COLORS="$LS_COLORS:ow=01;34:tw=01;34:"
