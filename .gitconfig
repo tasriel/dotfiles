@@ -5,3 +5,24 @@
 	helper = store
 [init]
 	defaultBranch = main
+[core]
+	editor = nvim
+[column]
+	ui = auto
+[branch]
+	sort = -commiterdate
+[tag]
+	sort = version:refname
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	renames = true
+	mnemonicPrefix = true
+[push]
+	autoSetupRemote = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[commit]
+	verbose = true
