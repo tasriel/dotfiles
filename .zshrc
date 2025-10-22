@@ -121,5 +121,5 @@ if [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
 
-# remove green background color (for wsl)
+# remove green background color in ls (for wsl)
 export LS_COLORS="$LS_COLORS:ow=01;34:tw=01;34:"
