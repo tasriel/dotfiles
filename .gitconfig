@@ -26,3 +26,5 @@
 	all = true
 [commit]
 	verbose = true
+[pull]
+	rebase = false
