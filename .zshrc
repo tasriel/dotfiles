@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
+# add neovim to path
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
 
 # Path to your Oh My Zsh installation.
