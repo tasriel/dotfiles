@@ -123,3 +123,6 @@ fi
 
 # remove green background color in ls (for wsl)
 export LS_COLORS="$LS_COLORS:ow=01;34:tw=01;34:"
+
+# activate ROS
+source /opt/ros/jazzy/setup.zsh
