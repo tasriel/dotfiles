@@ -12,6 +12,9 @@ tar xf lazygit.tar.gz lazygit
 sudo install lazygit -D -t /usr/local/bin/
 rm -rf lazygit lazygit.tar.gz
 
+# stow dotfiles
+stow .
+
 # [tmux] install python3 venv
 # sudo apt install python3.12-venv
 
