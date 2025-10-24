@@ -128,3 +128,8 @@ export LS_COLORS="$LS_COLORS:ow=01;34:tw=01;34:"
 
 # activate ROS
 source /opt/ros/jazzy/setup.zsh
+
+# start ssh-agent if it's not running
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  eval "$(ssh-agent -s)"
+fi
