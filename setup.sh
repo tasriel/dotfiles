@@ -1,5 +1,5 @@
 # install requirements
-sudo apt install -y git stow tmux
+sudo apt install -y git stow tmux curl
 
 # get git submodules of the repo
 git submodule init
@@ -11,6 +11,11 @@ curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/downl
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit -D -t /usr/local/bin/
 rm -rf lazygit lazygit.tar.gz
+
+# TODO: install zsh
+
+# TODO: install all kickstart-nvim requirements
+sudo apt install -y git make unzip gcc
 
 # stow dotfiles
 stow .
