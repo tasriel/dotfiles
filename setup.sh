@@ -1,5 +1,5 @@
 # install requirements
-sudo apt install -y git stow tmux curl
+sudo apt install -y git stow tmux curl xclip
 
 # get git submodules of the repo
 git submodule init
