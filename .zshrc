@@ -112,6 +112,8 @@ alias zshconfig="nvim ~/.zshrc"
 
 alias vim='nvim'
 alias ll='ls -alFsh'
+alias xc='xclip -selection clipboard'
+alias xv='xclip -selection clipboard -o'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
