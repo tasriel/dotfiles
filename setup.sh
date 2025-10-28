@@ -14,6 +14,18 @@ rm -rf lazygit lazygit.tar.gz
 
 # TODO: install zsh
 
+# install zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions \
+  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# install zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting \
+  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# install zsh-completions
+git clone https://github.com/zsh-users/zsh-completions.git \
+  ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+
 # TODO: install all kickstart-nvim requirements
 sudo apt install -y git make unzip gcc
 

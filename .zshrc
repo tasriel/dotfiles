@@ -78,7 +78,22 @@ ZSH_THEME="robbyrussell"
 plugins=(
 	git
 	z
+  zsh-autosuggestions
+
+  zsh-syntax-highlighting # keep as last plugin in this list
 )
+
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+# autoload -U compinit && compinit
+
+# Cache die Completion-Dateien, um compinit zu beschleunigen
+if [ -f ~/.zsh/zcompdump ]; then
+  autoload -U compinit
+  compinit -C -d ~/.zsh/zcompdump # -C um das Scannen zu überspringen
+else
+  autoload -U compinit
+  compinit -d ~/.zsh/zcompdump
+fi
 
 source $ZSH/oh-my-zsh.sh
 
