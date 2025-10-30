@@ -27,7 +27,7 @@ git clone https://github.com/zsh-users/zsh-completions.git \
   ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 
 # TODO: install all kickstart-nvim requirements
-sudo apt install -y git make unzip gcc
+sudo apt install -y git make unzip gcc xclip
 
 # stow dotfiles
 stow .
