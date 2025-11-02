@@ -78,21 +78,21 @@ ZSH_THEME="robbyrussell"
 plugins=(
 	git
 	z
-  zsh-autosuggestions
-
-  zsh-syntax-highlighting # keep as last plugin in this list
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-# autoload -U compinit && compinit
 
-# Cache die Completion-Dateien, um compinit zu beschleunigen
-if [ -f ~/.zsh/zcompdump ]; then
-  autoload -U compinit
-  compinit -C -d ~/.zsh/zcompdump # -C um das Scannen zu überspringen
+# Completion Caching aktivieren:
+# Compinit und Completions nur einmal scannen und cachen.
+# Der Cache (zcompdump) wird nur aktualisiert, wenn die Dateien neuer sind.
+ZSH_COMPDUMP="$HOME/.zsh/zcompdump"
+if [[ -f "$ZSH_COMPDUMP" && -r "$ZSH_COMPDUMP" ]]; then
+   autoload -U compinit
+   # -C überspringt das Scannen des fpath, wenn die Dump-Datei aktuell ist
+   compinit -C -d "$ZSH_COMPDUMP"
 else
-  autoload -U compinit
-  compinit -d ~/.zsh/zcompdump
+   autoload -U compinit
+   compinit -d "$ZSH_COMPDUMP"
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -131,10 +131,24 @@ alias ll='ls -alFsh'
 alias xc='xclip -selection clipboard'
 alias xv='xclip -selection clipboard -o'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Lazy Loading für NVM
+autoload -U add-zsh-hook
+load_nvm() {
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+  # Wenn nvm einmal geladen wurde, muss diese Funktion nicht erneut aufgerufen werden
+  unfunction node npm yarn pnpm nvm
+}
+
+# nvm erst laden, wenn die Befehle node, npm, yarn, pnpm oder nvm aufgerufen werden
+alias nvm='load_nvm; nvm'
+alias node='load_nvm; node'
+alias npm='load_nvm; npm'
+alias yarn='load_nvm; yarn'
+alias pnpm='load_nvm; pnpm'
 
 # start tmux session by default
 if [ -z "$TMUX" ]; then
@@ -144,10 +158,14 @@ fi
 # remove green background color in ls (for wsl)
 export LS_COLORS="$LS_COLORS:ow=01;34:tw=01;34:"
 
-# activate ROS
-source /opt/ros/jazzy/setup.zsh
+# alias to activate ROS
+alias jazzy='source /opt/ros/jazzy/setup.zsh'
 
 # start ssh-agent if it's not running
 if [ -z "$SSH_AUTH_SOCK" ]; then
   eval "$(ssh-agent -s)"
 fi
+
+# keep this at the bottom of the file
+source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
