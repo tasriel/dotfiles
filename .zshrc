@@ -131,24 +131,9 @@ alias ll='ls -alFsh'
 alias xc='xclip -selection clipboard'
 alias xv='xclip -selection clipboard -o'
 
-
-# Lazy Loading für NVM
-autoload -U add-zsh-hook
-load_nvm() {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-  # Wenn nvm einmal geladen wurde, muss diese Funktion nicht erneut aufgerufen werden
-  unfunction node npm yarn pnpm nvm
-}
-
-# nvm erst laden, wenn die Befehle node, npm, yarn, pnpm oder nvm aufgerufen werden
-alias nvm='load_nvm; nvm'
-alias node='load_nvm; node'
-alias npm='load_nvm; npm'
-alias yarn='load_nvm; yarn'
-alias pnpm='load_nvm; pnpm'
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # start tmux session by default
 if [ -z "$TMUX" ]; then
