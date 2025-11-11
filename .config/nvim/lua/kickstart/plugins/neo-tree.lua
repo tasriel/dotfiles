@@ -25,5 +25,37 @@ return {
         hide_dotfiles = false,
       },
     },
+    default_component_configs = {
+      modified = { symbol = '󱞇 ' },
+      indent = {
+        with_expanders = true,
+        expander_collapsed = '',
+        expander_expanded = '',
+        expander_highlight = 'NeoTreeExpander',
+      },
+      diagnostics = {
+        symbols = {
+          hint = ' ',
+          info = ' ',
+          warn = ' ',
+          error = ' ',
+        },
+      },
+      git_status = {
+        symbols = {
+          -- Change type
+          added = 'A',
+          deleted = 'D',
+          modified = 'M',
+          renamed = 'R',
+          -- Status type
+          untracked = '󰄱',
+          ignored = 'I',
+          unstaged = 'U',
+          staged = 'S',
+          conflict = '',
+        },
+      },
+    },
   },
 }
