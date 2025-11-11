@@ -1,9 +1,9 @@
 # install requirements
 sudo apt install -y git stow tmux curl xclip
 
-# get git submodules of the repo
-git submodule init
-git submodule update --recursive
+# install tmuxinator (https://github.com/tmuxinator/tmuxinator)
+sudo apt install ruby ruby-dev
+sudo gem install tmuxinator
 
 # install lazygit
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
