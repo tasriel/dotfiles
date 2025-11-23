@@ -643,56 +643,41 @@ require('lazy').setup({
       -- Diagnostic Config
       -- See :help vim.diagnostic.Opts
       --
-      local inline_diagnostic_settings = {
-        source = 'if_many',
-        spacing = 2,
-        format = function(diagnostic)
-          local diagnostic_message = {
-            [vim.diagnostic.severity.ERROR] = diagnostic.message,
-            [vim.diagnostic.severity.WARN] = diagnostic.message,
-            [vim.diagnostic.severity.INFO] = diagnostic.message,
-            [vim.diagnostic.severity.HINT] = diagnostic.message,
-          }
-          return diagnostic_message[diagnostic.severity]
-        end,
+      -- default settings for inline diagnostics (currently handled by tiny-inline-diagnostic plugin)
+      -- local inline_diagnostic_settings = {
+      --   source = 'if_many',
+      --   spacing = 2,
+      --   format = function(diagnostic)
+      --     local diagnostic_message = {
+      --       [vim.diagnostic.severity.ERROR] = diagnostic.message,
+      --       [vim.diagnostic.severity.WARN] = diagnostic.message,
+      --       [vim.diagnostic.severity.INFO] = diagnostic.message,
+      --       [vim.diagnostic.severity.HINT] = diagnostic.message,
+      --     }
+      --     return diagnostic_message[diagnostic.severity]
+      --   end,
+      -- }
+
+      vim.diagnostic.config {
+        config = {
+          severity_sort = true,
+          float = { border = 'rounded', source = 'if_many' },
+          underline = { severity = vim.diagnostic.severity.ERROR },
+          signs = vim.g.have_nerd_font and {
+            text = {
+              [vim.diagnostic.severity.ERROR] = '󰅚 ',
+              [vim.diagnostic.severity.WARN] = '󰀪 ',
+              [vim.diagnostic.severity.INFO] = '󰋽 ',
+              [vim.diagnostic.severity.HINT] = '󰌶 ',
+            },
+          } or {},
+          virtual_text = false, -- is handled by tiny-inline-diagnostic plugin
+        },
       }
 
-      local diagnostics_config = {
-        severity_sort = true,
-        float = { border = 'rounded', source = 'if_many' },
-        underline = { severity = vim.diagnostic.severity.ERROR },
-        signs = vim.g.have_nerd_font and {
-          text = {
-            [vim.diagnostic.severity.ERROR] = '󰅚 ',
-            [vim.diagnostic.severity.WARN] = '󰀪 ',
-            [vim.diagnostic.severity.INFO] = '󰋽 ',
-            [vim.diagnostic.severity.HINT] = '󰌶 ',
-          },
-        } or {},
-        virtual_text = inline_diagnostic_settings,
-      }
-
-      vim.diagnostic.config(diagnostics_config)
-
-      local inline_diagnostics = true
-      local function toggle_diagnostics_inline()
-        inline_diagnostics = not inline_diagnostics
-
-        diagnostics_config.virtual_text = inline_diagnostics and inline_diagnostic_settings or false
-
-        vim.diagnostic.config(diagnostics_config)
-
-        local status = inline_diagnostics and 'true' or 'false'
-        print('Inline Diagnostics set to ' .. status)
-      end
-
-      vim.keymap.set('n', '<leader>dt', function()
+      vim.keymap.set('n', '<leader>td', function()
         vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-      end, { silent = true, noremap = true, desc = '[D]iagnostics [T]oggle' })
-      vim.keymap.set('n', '<leader>di', toggle_diagnostics_inline, { desc = '[D]iagnostics [I]nline' })
-      vim.keymap.set('n', '<leader>dh', function()
-        vim.diagnostic.open_float(nil, { focus = false, focusable = true, scope = 'line' })
-      end, { desc = '[D]iagnostics [H]int' })
+      end, { silent = true, noremap = true, desc = '[T]oggle [D]iagnostics' })
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
