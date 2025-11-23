@@ -8,7 +8,7 @@ config = {
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE", -- disable the title bar but enable the reisizable border
 	color_scheme = "Tokyo Night",
-	font = wezterm.font("JetBrains Mono", { weight = "Bold" }),
+	font = wezterm.font("JetBrains Mono", { weight = "DemiBold" }),
 	font_size = 12.5,
 	window_padding = {
 		left = 3,
