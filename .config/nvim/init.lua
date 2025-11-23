@@ -171,8 +171,8 @@ vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.o.expandtab = true
 
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevel = 99
 
 -- [[ Basic Keymaps ]]
@@ -258,9 +258,9 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   {
     'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
-    config = function ()
+    config = function()
       require('guess-indent').setup {}
-    end
+    end,
   },
 
   -- NOTE: Plugins can also be added by using a table,
@@ -642,7 +642,22 @@ require('lazy').setup({
 
       -- Diagnostic Config
       -- See :help vim.diagnostic.Opts
-      vim.diagnostic.config {
+      --
+      local inline_diagnostic_settings = {
+        source = 'if_many',
+        spacing = 2,
+        format = function(diagnostic)
+          local diagnostic_message = {
+            [vim.diagnostic.severity.ERROR] = diagnostic.message,
+            [vim.diagnostic.severity.WARN] = diagnostic.message,
+            [vim.diagnostic.severity.INFO] = diagnostic.message,
+            [vim.diagnostic.severity.HINT] = diagnostic.message,
+          }
+          return diagnostic_message[diagnostic.severity]
+        end,
+      }
+
+      local diagnostics_config = {
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
         underline = { severity = vim.diagnostic.severity.ERROR },
@@ -654,20 +669,30 @@ require('lazy').setup({
             [vim.diagnostic.severity.HINT] = '󰌶 ',
           },
         } or {},
-        virtual_text = {
-          source = 'if_many',
-          spacing = 2,
-          format = function(diagnostic)
-            local diagnostic_message = {
-              [vim.diagnostic.severity.ERROR] = diagnostic.message,
-              [vim.diagnostic.severity.WARN] = diagnostic.message,
-              [vim.diagnostic.severity.INFO] = diagnostic.message,
-              [vim.diagnostic.severity.HINT] = diagnostic.message,
-            }
-            return diagnostic_message[diagnostic.severity]
-          end,
-        },
+        virtual_text = inline_diagnostic_settings,
       }
+
+      vim.diagnostic.config(diagnostics_config)
+
+      local inline_diagnostics = true
+      local function toggle_diagnostics_inline()
+        inline_diagnostics = not inline_diagnostics
+
+        diagnostics_config.virtual_text = inline_diagnostics and inline_diagnostic_settings or false
+
+        vim.diagnostic.config(diagnostics_config)
+
+        local status = inline_diagnostics and 'true' or 'false'
+        print('Inline Diagnostics set to ' .. status)
+      end
+
+      vim.keymap.set('n', '<leader>dt', function()
+        vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+      end, { silent = true, noremap = true, desc = '[D]iagnostics [T]oggle' })
+      vim.keymap.set('n', '<leader>di', toggle_diagnostics_inline, { desc = '[D]iagnostics [I]nline' })
+      vim.keymap.set('n', '<leader>dh', function()
+        vim.diagnostic.open_float(nil, { focus = false, focusable = true, scope = 'line' })
+      end, { desc = '[D]iagnostics [H]int' })
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -913,7 +938,15 @@ require('lazy').setup({
   },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      signs = false,
+      pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
+    },
+  },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -959,7 +992,7 @@ require('lazy').setup({
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'tsx', 'vim', 'vimdoc' },
-      ignore_install = { "latex" },
+      ignore_install = { 'latex' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
