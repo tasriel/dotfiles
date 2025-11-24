@@ -24,3 +24,4 @@ _darcs
 
 setup.sh
 install_wezterm.sh
+subtree-pull-kickstart.sh
