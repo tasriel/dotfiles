@@ -146,6 +146,9 @@ export LS_COLORS="$LS_COLORS:ow=01;34:tw=01;34:"
 # alias to activate ROS
 alias jazzy='source /opt/ros/jazzy/setup.zsh'
 
+# avoid flickering in rviz2
+QT_SCREEN_SCALE_FACTORS=1
+
 # start ssh-agent if it's not running
 if [ -z "$SSH_AUTH_SOCK" ]; then
   eval "$(ssh-agent -s)"
