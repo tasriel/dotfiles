@@ -4,6 +4,9 @@
 # add neovim to path
 export PATH="$PATH:/opt/neovim/bin"
 
+# minot
+export PATH="$PATH:/home/jannis/.local/bin"
+
 export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
 
 # Path to your Oh My Zsh installation.
