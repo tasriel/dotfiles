@@ -130,7 +130,7 @@ alias zshconfig="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias vim='nvim'
-alias ll='ls -alFsh'
+alias ll='ls -lFv --all --size --human-readable --group-directories-first'
 alias xc='xclip -selection clipboard'
 alias xv='xclip -selection clipboard -o'
 
