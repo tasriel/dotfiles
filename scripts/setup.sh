@@ -29,9 +29,6 @@ git clone https://github.com/zsh-users/zsh-completions.git \
 # TODO: install all kickstart-nvim requirements
 sudo apt install -y git make unzip gcc xclip
 
-# stow dotfiles
-stow .
-
 # [tmux] install python3 venv
 # sudo apt install python3.12-venv
 

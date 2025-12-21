@@ -22,6 +22,4 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-setup.sh
-install_wezterm.sh
-subtree-pull-kickstart.sh
+/scripts
