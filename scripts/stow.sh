@@ -1,2 +1,2 @@
 #!/bin/bash
-stow --simulate -v --dir=$HOME/dotfiles --target=$HOME .
+stow -v --dir=$HOME/dotfiles --target=$HOME .
