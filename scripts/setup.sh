@@ -37,3 +37,29 @@ sudo apt install -y git make unzip gcc xclip
 # tmux source ~/.tmux.conf
 
 # clone with --recurse-submodules option!!
+
+
+# i3
+# sound
+sudo apt install cargo libpipewire-0.3-dev pkg-config clang
+cargo install wiremix
+
+# wifi
+cargo install impala
+# TODO: add dependencies
+
+# bluetooth
+sudo apt install bluez
+cargo install bluetui
+
+# i3 config
+# install polybar + themes
+sudo apt install polybar
+git clone --depth=1 https://github.com/adi1090x/polybar-themes.git
+cd polybar-themes
+chmod +x setup.sh
+./setup.sh
+cd .. && rm -rf polybar-themes
+
+# install rofi
+sudo apt install rofi
