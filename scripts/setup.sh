@@ -40,13 +40,19 @@ sudo apt install -y git make unzip gcc xclip
 
 
 # i3
+# brightness
+sudo apt install brightnessctl
+
 # sound
+sudo apt install pulseaudio-utils # sound & mute control
+sudo apt install playerctl # media control
 sudo apt install cargo libpipewire-0.3-dev pkg-config clang
 cargo install wiremix
 
 # wifi
+sudo apt install iwd
+sudo systemctl enable iwd.service
 cargo install impala
-# TODO: add dependencies
 
 # bluetooth
 sudo apt install bluez
