@@ -35,17 +35,12 @@ alias xc='xclip -selection clipboard'
 alias xv='xclip -selection clipboard -o'
 alias jazzy='source /opt/ros/jazzy/setup.zsh' # activate ros
 
-# smart nvm loading
-export NVM_DIR="$HOME/.nvm"
-nvm() {
-    unset -f nvm node npm npx
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    nvm "$@"
-}
-node() { nvm && node "$@" }
-npm() { nvm && npm "$@" }
-npx() { nvm && npx "$@" }
+# fnm
+FNM_PATH="/home/jannis/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
 
 # start tmux session by default
 if [[ -z "$TMUX" && -z "$SSH_CONNECTION" ]]; then
