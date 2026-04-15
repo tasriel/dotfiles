@@ -36,7 +36,7 @@ alias xv='xclip -selection clipboard -o'
 alias jazzy='source /opt/ros/jazzy/setup.zsh' # activate ros
 
 # fnm
-FNM_PATH="/home/jannis/.local/share/fnm"
+FNM_PATH="~/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "$(fnm env --shell zsh)"
