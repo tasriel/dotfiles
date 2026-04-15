@@ -111,6 +111,9 @@ tiling_drag modifier titlebar
 # KEYBINDINGS
 #####################
 
+# lock screeen
+bindsym $mod+o exec i3lock
+
 # start a terminal
 bindsym $mod+Return exec wezterm
 
