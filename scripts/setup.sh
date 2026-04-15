@@ -38,6 +38,8 @@ sudo apt install -y git make unzip gcc xclip
 
 # clone with --recurse-submodules option!!
 
+# install fnm as node version manager
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell --install-dir $HOME/.local/share/fnm 
 
 # i3
 # brightness
