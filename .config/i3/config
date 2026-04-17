@@ -124,7 +124,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/wofi/launcher.rasi
 
 # Power menu
-bindsym $mod+P exec /home/marco/.config/wofi/wofi-power.sh
+bindsym $mod+P exec $HOME/.config/wofi/wofi-power.sh
 
 # change focus
 bindsym $mod+j focus down
