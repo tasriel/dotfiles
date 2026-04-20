@@ -71,3 +71,6 @@ cd .. && rm -rf polybar-themes
 
 # install rofi
 sudo apt install rofi
+
+# wallpaper - add this as cronjob to change wallpaper dynamically:
+# 0 * * * * bash $HOME/dotfiles/scripts/set_wallpaper.bash
