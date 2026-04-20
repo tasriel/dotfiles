@@ -258,7 +258,7 @@ exec --no-startup-id xsetroot -solid "#000000"
 exec_always xrdb -merge ~/.Xresources
 
 # set wallpaper
-exec --no-startup-id $HOME/dotfiles/scripts/set_wallpaper.bash
+exec --no-startup-id bash $HOME/dotfiles/scripts/set_wallpaper.bash
 
 # start notification daemon
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
