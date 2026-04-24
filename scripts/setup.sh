@@ -87,3 +87,8 @@ sudo cp sunwait /usr/local/bin/
 
 # add this as cronjob to change wallpaper dynamically:
 # 0 * * * * bash $HOME/dotfiles/scripts/set_wallpaper.bash
+
+# install yazi file manager
+cargo install --force yazi-build
+# install optional dependencies for yazi
+sudo apt install ffmpeg 7zip jq fd-find ripgrep fzf zoxide imagemagick
