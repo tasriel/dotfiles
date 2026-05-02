@@ -31,9 +31,10 @@ i3lock \
 --radius 110 \
 --screen 1                   \
 --image=$HOME/dotfiles/.config/wallpaper/current_blurred.jpg \
+--max                        \
 --blur 9                     \
 --clock                      \
 --indicator                  \
 --time-str="%H:%M:%S"        \
---date-str="%A, %d.%m."       \
+--date-str="%A, %d.%m."      \
 --keylayout 1                \
