@@ -1,0 +1,39 @@
+#!/bin/sh
+
+BLANK='#00000000'
+CLEAR='#ffffaa22'
+DEFAULT='#ffffffff'
+TEXT='#ffffffff'
+WRONG='#963c47ff'
+VERIFYING='#00564dE6'
+
+i3lock \
+--insidever-color=$CLEAR     \
+--ringver-color=$VERIFYING   \
+\
+--insidewrong-color=$CLEAR   \
+--ringwrong-color=$WRONG     \
+\
+--inside-color=$BLANK        \
+--ring-color=$DEFAULT        \
+--line-color=$BLANK          \
+--separator-color=$DEFAULT   \
+\
+--verif-color=$TEXT          \
+--wrong-color=$TEXT          \
+--modif-color=$TEXT          \
+--time-color=$TEXT           \
+--date-color=$TEXT           \
+--layout-color=$TEXT         \
+--keyhl-color=$VERIFYING         \
+--bshl-color=$WRONG          \
+\
+--radius 110 \
+--screen 1                   \
+--image=$HOME/dotfiles/.config/wallpaper/current_blurred.jpg \
+--blur 9                     \
+--clock                      \
+--indicator                  \
+--time-str="%H:%M:%S"        \
+--date-str="%A, %d.%m."       \
+--keylayout 1                \

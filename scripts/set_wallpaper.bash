@@ -5,6 +5,8 @@ function setbg {
   cp $1 $wallpaper_config/current.jpg
   DISPLAY=:0.0 feh --bg-scale $wallpaper_config/current.jpg
   # notify-send "wallpaper changed"
+  # create blurred version of the wallpaper (for i3lock)
+  convert $wallpaper_config/current.jpg -blur 0x8 $wallpaper_config/current_blurred.jpg
 }
 
 
