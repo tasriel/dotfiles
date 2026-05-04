@@ -100,3 +100,5 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# vim: ft=i3config

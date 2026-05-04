@@ -54,3 +54,5 @@ client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
 
 # Hide gaps when there is only 1 window
 # smart_gaps on
+
+# vim: ft=i3config

@@ -13,3 +13,5 @@ bindsym XF86AudioPlay  exec --no-startup-id playerctl play
 bindsym XF86AudioPause exec --no-startup-id playerctl pause
 bindsym XF86AudioNext  exec --no-startup-id playerctl next
 bindsym XF86AudioPrev  exec --no-startup-id playerctl previous
+
+# vim: ft=i3config
