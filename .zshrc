@@ -34,6 +34,7 @@ alias ll='ls -lFv --all --size --human-readable --group-directories-first'
 alias xc='xclip -selection clipboard'
 alias xv='xclip -selection clipboard -o'
 alias jazzy='source /opt/ros/jazzy/setup.zsh' # activate ros
+alias sqlite3='sqlite3 -init $HOME/.config/sqlite3/sqliterc'
 
 # fnm
 FNM_PATH="$HOME/.local/share/fnm"
