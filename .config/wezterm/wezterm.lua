@@ -9,7 +9,8 @@ config.window_decorations = "RESIZE" -- disable the title bar but enable the rei
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font_with_fallback({
 	{family = "JetBrainsMono Nerd Font", weight = "DemiBold" },
-	{family = "feather"},
+	{family = "feather"}, -- used for i3 polybar grayblocks-theme
+	{family = "icomoon-feather"}, -- used for i3 polybar grayblocks-theme
 })
 config.font_size = 12.5
 config.window_padding = {
