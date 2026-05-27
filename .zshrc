@@ -13,8 +13,7 @@ ZSH_DISABLE_COMPFIX="true"
 # zsh plugins
 plugins=(
 	git
-	z
-  ssh-agent
+	ssh-agent
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -90,5 +89,6 @@ function y() {
 # keep this at the bottom of the file
 source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+eval "$(zoxide init zsh)"
 
 # zprof # startup time measurement
