@@ -27,6 +27,9 @@ else
   export EDITOR='nvim'
 fi
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # aliases
 alias zshconfig="nvim ~/.zshrc"
 alias vim='nvim'
