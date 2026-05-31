@@ -1,3 +1,5 @@
+#!/bin/bash
+
 wallpaper_config=$HOME/dotfiles/.config/wallpaper
 curr_wallpaper_folder=$wallpaper_config/outset-island-zelda-windwaker
 

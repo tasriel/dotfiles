@@ -1,8 +1,8 @@
 # zmodload zsh/zprof # startup time measurement
 
 # paths
-export PATH="$PATH:/home/jannis/.local/bin" # minot
-export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH # texlive
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/usr/local/texlive/2025/bin/x86_64-linux" # texlive
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
