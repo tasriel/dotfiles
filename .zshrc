@@ -13,9 +13,13 @@ ZSH_DISABLE_COMPFIX="true"
 plugins=(
 	git
 	ssh-agent
+
+	# keep at the bottom
+	zsh-completions
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
 
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
@@ -85,8 +89,6 @@ function y() {
 }
 
 # keep this at the bottom of the file
-source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(zoxide init zsh)"
 
 # zprof # startup time measurement
