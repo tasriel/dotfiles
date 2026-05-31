@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # brightness
 sudo apt install brightnessctl

@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 # install yazi file manager
 rustup update
 cargo install --force yazi-build
+
 # install optional dependencies for yazi
-sudo apt install ffmpeg 7zip jq fd-find ripgrep zoxide imagemagick
+sudo apt install -y ffmpeg 7zip jq fd-find ripgrep zoxide imagemagick xclip
