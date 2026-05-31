@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e 
+
 # install yazi file manager
 rustup update
 cargo install --force yazi-build
