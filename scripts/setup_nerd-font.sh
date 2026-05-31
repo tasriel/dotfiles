@@ -1,6 +1,10 @@
 #!/bin/bash
 
-JET_BRAINS_MONO_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip"
+set -e
+
+sudo apt install -y wget unzip
+
+JET_BRAINS_MONO_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/latest/JetBrainsMono.zip"
 
 # Create a temporary directory
 TEMP_DIR=$(mktemp -d)
