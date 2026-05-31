@@ -1,7 +1,6 @@
 # zmodload zsh/zprof # startup time measurement
 
 # paths
-export PATH="$PATH:/opt/neovim/bin" # neovim
 export PATH="$PATH:/home/jannis/.local/bin" # minot
 export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH # texlive
 
