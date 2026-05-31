@@ -29,8 +29,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # aliases
-alias zshconfig="nvim ~/.zshrc"
-alias vim='nvim'
+alias zshconfig="$EDITOR ~/.zshrc"
 alias ll='ls -lFv --all --size --human-readable --group-directories-first'
 alias xc='xclip -selection clipboard'
 alias xv='xclip -selection clipboard -o'
