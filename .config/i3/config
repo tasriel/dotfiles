@@ -31,10 +31,10 @@ exec --no-startup-id xsetroot -solid "#000000"
 exec_always --no-startup-id xrdb -merge ~/.Xresources
 
 # set wallpaper
-exec --no-startup-id bash $HOME/dotfiles/scripts/set_wallpaper.sh
+exec --no-startup-id bash $HOME/dotfiles/scripts/set_wallpaper.sh &
 
 # start notification daemon
-exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
+exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc &
 
 # start polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh --grayblocks &
