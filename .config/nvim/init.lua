@@ -708,6 +708,24 @@ require('lazy').setup({
         ts_ls = {},
         --
 
+        basedpyright = {
+          -- settings = {
+          --   basedpyright = {
+          --     disableOrganizeImports = true,
+          --     analysis = {
+          --       diagnosticMode = 'openFilesOnly',
+          --       typeCheckingMode = 'standard',
+          --     },
+          --   },
+          -- },
+        },
+
+        ruff = {
+          -- capabilities = {
+          --   hoverProvider = false,
+          -- },
+        },
+
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
