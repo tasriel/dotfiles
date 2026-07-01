@@ -18,6 +18,9 @@ cargo install impala
 sudo apt install bluez
 cargo install bluetui
 
+# screen lock
+sudo apt install caffeine
+
 # i3 config
 # install polybar requirements
 sudo apt install polybar
