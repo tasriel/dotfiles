@@ -12,7 +12,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 # # assign apps to workspaces
-# assign [class="firefox"] $ws2
+assign [class="firefox"] $ws2
 # assign [class="Spotify"] $ws4
 
 # switch to workspace
