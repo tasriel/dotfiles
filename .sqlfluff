@@ -1,0 +1,6 @@
+[sqlfluff]
+dialect=sqlite
+exclude_rules = AM04, RF03, CP02
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
