@@ -11,12 +11,11 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# # assign apps to workspaces
+# assign apps to workspaces
 assign [class="firefox"] $ws2
 assign [class="code"] $ws3
 assign [class="Spotify"] $ws10
-assign [class="thunderbird"] $ws9
-assign [class="zulip"] $ws9
+assign [class="thunderbird|zulip"] $ws9
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
