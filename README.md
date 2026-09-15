@@ -2,6 +2,8 @@
 
 Personal configuration for a Linux desktop built around zsh, i3, neovim, and tmux.
 
+Using the [Tokyo Night theme](https://tokyonight.org/) for most applications.
+
 ![alt text](./i3_demo.png)
 
 ## Setup
