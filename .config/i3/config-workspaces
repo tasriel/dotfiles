@@ -14,9 +14,10 @@ set $ws10 "10"
 # assign apps to workspaces
 assign [class="firefox"] $ws2
 assign [class="code"] $ws3
-assign [class="Spotify"] $ws10
+assign [class="obsidian"] $ws7
 assign [class="zulip"] $ws8
 assign [class="thunderbird"] $ws9
+assign [class="Spotify"] $ws10
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
