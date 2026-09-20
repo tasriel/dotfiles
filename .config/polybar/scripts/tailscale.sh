@@ -18,9 +18,9 @@ case "$state" in
         echo "󱦛 down"
         ;;
     NeedsLogin)
-        echo "%{F#f9e2af} Login nötig%{F-}"
+        echo "󱦛 %{F#f9e2af} Login required%{F-}"
         ;;
     *)
-        echo "%{F#f9e2af} $state%{F-}"
+        echo "󱦛 %{F#f9e2af} $state%{F-}"
         ;;
 esac
