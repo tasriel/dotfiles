@@ -24,6 +24,7 @@ sudo apt install caffeine
 # i3 config
 # install polybar requirements
 sudo apt install polybar
+sudo apt install jq
 git clone --depth=1 https://github.com/adi1090x/polybar-themes.git
 cd polybar-themes
 chmod +x setup.sh
