@@ -16,5 +16,11 @@
     "vim.useSystemClipboard": true,
     "git.autofetch": true,
     "git.confirmSync": false,
-    "claudeCode.preferredLocation": "panel"
+    "claudeCode.preferredLocation": "panel",
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["<leader>", "s", "f"], "commands": ["workbench.action.quickOpen"] },
+        { "before": ["<leader>", "s", "g"], "commands": ["workbench.action.findInFiles"] },
+        { "before": ["<leader>", "f"], "commands": ["editor.action.formatDocument"] },
+    ]
 }
