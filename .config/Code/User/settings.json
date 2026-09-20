@@ -1,0 +1,20 @@
+{
+    "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-auto",
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "redhat.telemetry.enabled": true,
+    "editor.cursorBlinking": "phase",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "python.analysis.typeCheckingMode": "standard",
+    "settingsSync.ignoredSettings": [],
+    "chat.viewSessions.orientation": "stacked",
+    "vim.useSystemClipboard": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "claudeCode.preferredLocation": "panel"
+}
