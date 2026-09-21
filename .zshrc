@@ -1,5 +1,9 @@
 # zmodload zsh/zprof # startup time measurement
 
+# language
+export LANG=de_DE.UTF-8
+export LC_ALL=de_DE.UTF-8
+
 # paths
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/texlive/2025/bin/x86_64-linux:$PATH" # texlive
