@@ -1,0 +1,20 @@
+reload_plus # unset
+reload_minus # unset
+
+zoom_in plus
+zoom_out minus
+zoom_fit a
+
+scroll_left h
+scroll_down j
+scroll_up k
+scroll_right l
+
+next_img J
+prev_img K
+
+reload_image # unset
+orient_1 r
+orient_3 R
+
+toggle_info i

@@ -1,0 +1,6 @@
+feh --info "echo %wx%h Pixel - %S" \
+    --image-bg black \
+    --draw-filename \
+    --draw-tinted \
+    --auto-zoom \
+    --scale-down
