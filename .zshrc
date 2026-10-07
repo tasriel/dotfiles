@@ -7,6 +7,7 @@ export LC_ALL=de_DE.UTF-8
 # paths
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/texlive/2025/bin/x86_64-linux:$PATH" # texlive
+export CONDARC="$HOME/.config/conda/.condarc"
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -92,6 +93,21 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/jannis/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/jannis/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/jannis/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/jannis/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 # keep this at the bottom of the file
 eval "$(zoxide init zsh)"
