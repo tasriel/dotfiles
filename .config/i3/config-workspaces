@@ -16,7 +16,7 @@ assign [class="firefox"] $ws2
 assign [class="code"] $ws3
 assign [class="Claude"] $ws5
 assign [class="obsidian"] $ws7
-assign [class="zulip"] $ws8
+assign [class="zulip|discord"] $ws8
 assign [class="thunderbird"] $ws9
 assign [class="Spotify"] $ws10
 
