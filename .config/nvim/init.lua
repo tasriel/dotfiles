@@ -170,6 +170,11 @@ vim.o.confirm = true
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.o.expandtab = true
+vim.opt.spell = true -- Enable spellchecking
+vim.opt.spelllang = { 'en', 'de' } -- Set language to English and German
+vim.keymap.set('n', '<leader>ts', function()
+  vim.opt_local.spell = not vim.opt_local.spell:get()
+end, { desc = '[T]oggle [s]pellcheck' })
 
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -697,13 +702,13 @@ require('lazy').setup({
       local servers = {
         clangd = {
           cmd = {
-            "clangd",
-            "--background-index",
-            "--clang-tidy",
-            "--header-insertion=iwyu",
-            "--completion-style=detailed",
-            "--function-arg-placeholders",
-            "--fallback-style=llvm",
+            'clangd',
+            '--background-index',
+            '--clang-tidy',
+            '--header-insertion=iwyu',
+            '--completion-style=detailed',
+            '--function-arg-placeholders',
+            '--fallback-style=llvm',
             '--query-driver=**/*g++*,**/*gcc*',
           },
         },
@@ -814,7 +819,7 @@ require('lazy').setup({
       -- end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        sql = { 'sqlfluff' }
+        sql = { 'sqlfluff' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -825,7 +830,7 @@ require('lazy').setup({
         sqlfluff = {
           expect_errors = true,
         },
-      }
+      },
     },
   },
 
