@@ -37,6 +37,9 @@ fi
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# ghcup-env
+[ -f "/home/jannis/.ghcup/env" ] && . "/home/jannis/.ghcup/env" 
+
 # aliases
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ll='ls -lFv --all --size --human-readable --group-directories-first'
