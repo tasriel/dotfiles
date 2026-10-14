@@ -9,6 +9,10 @@
 #
 # Startzustand nach dem Hochfahren: Fn-Lock AUS.
 #
+# Auf Rechnern ohne Fn-Lock (z. B. Desktop) fehlt das Gerät MARKER_DEVICE. Das
+# Skript gibt dann nur eine leere Zeile aus (polybar blendet das Modul aus) und
+# wartet still – ohne Fehlermeldung und ohne von polybar neu gestartet zu werden.
+#
 # Einschränkung: Hältst du Fn gedrückt, um eine Sonderfunktion einmalig zu
 # nutzen, sieht das für Linux genauso aus wie aktivierter Fn-Lock. Der Punkt
 # springt dann um und korrigiert sich beim nächsten normalen F-Tastendruck.
@@ -30,6 +34,11 @@ SYMBOL="●"
 COLOR_ON="#a3be8c"      # Fn-Lock an (Sonderfunktionen)
 COLOR_OFF="#4c566a"     # Fn-Lock aus (F-Tasten)
 COLOR_ERROR="#bf616a"   # Keine Eingabegeräte lesbar
+
+# Gerät, das nur auf dem Laptop existiert. Fehlt es, wird nichts angezeigt.
+# ("Video Bus" oder eine PS/2-Tastatur gibt es oft auch am Desktop, daher
+# taugen die nicht als Erkennungsmerkmal.)
+MARKER_DEVICE="Asus WMI hotkeys"
 
 # Geräte, auf denen F-Tasten bzw. Sonderfunktionen ankommen können
 # (Namen wie in `sudo evtest` angezeigt).
@@ -62,6 +71,20 @@ render() {
     local color
     if (( $1 )); then color=$COLOR_ON; else color=$COLOR_OFF; fi
     printf '%%{F%s}%s%%{F-}\n' "$color" "$SYMBOL"
+}
+
+# Erfolgreich, wenn dieser Rechner einen Fn-Lock hat (MARKER_DEVICE vorhanden).
+# Mit gesetztem FNLOCK_DEVICES wird die Prüfung übersprungen.
+has_fn_lock() {
+    [[ -n "${FNLOCK_DEVICES:-}" ]] && return 0
+    grep -qxF "N: Name=\"$MARKER_DEVICE\"" /proc/bus/input/devices 2>/dev/null
+}
+
+# Modul ausblenden und still weiterlaufen. Ein Beenden würde polybar
+# (tail = true) dazu bringen, das Skript immer wieder neu zu starten.
+hide_forever() {
+    echo
+    exec sleep infinity
 }
 
 # Gibt die /dev/input/eventX-Pfade aller Geräte aus DEVICE_NAMES aus.
@@ -103,8 +126,7 @@ trap cleanup EXIT
 trap 'exit 0' TERM INT HUP
 
 main() {
-    local state=$INITIAL_FN_LOCK
-    render "$state"
+    has_fn_lock || hide_forever
 
     local devices=() dev
     while IFS= read -r dev; do
@@ -116,6 +138,9 @@ main() {
         echo "fnlock-watch: keine lesbaren Eingabegeräte gefunden (Gruppe 'input'?)" >&2
         exit 1
     fi
+
+    local state=$INITIAL_FN_LOCK
+    render "$state"
 
     # Ein od pro Gerät, alle schreiben zeilenweise in dieselbe Pipe.
     local fd
