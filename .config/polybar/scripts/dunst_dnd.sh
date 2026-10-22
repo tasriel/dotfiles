@@ -19,7 +19,7 @@ readonly DND_PEEK_SECONDS=8
 # Nerd Font icons (written as codepoints to avoid copy/paste problems)
 readonly ICON_BELL_FILLED="󰂚"
 readonly ICON_BELL_OUTLINE="󰂜"
-readonly ICON_BELL_OFF="󰪑"
+readonly ICON_BELL_OFF="󰂛"
 
 show_status() {
   local history_count
