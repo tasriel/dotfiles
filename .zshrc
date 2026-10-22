@@ -47,6 +47,7 @@ alias xc='xclip -selection clipboard'
 alias xv='xclip -selection clipboard -o'
 alias jazzy='source /opt/ros/jazzy/setup.zsh' # activate ros
 alias lg='lazygit'
+alias dnd='dunstctl set-paused toggle && echo $(dunstctl is-paused)'
 
 # fnm
 FNM_PATH="$HOME/.local/share/fnm"
