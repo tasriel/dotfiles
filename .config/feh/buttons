@@ -1,0 +1,12 @@
+# Zwei-Finger-Scrollen = Bild verschieben
+scroll_up 4
+scroll_down 5
+scroll_left 6
+scroll_right 7
+
+# Strg + Scrollen = Zoom (wie gehabt)
+zoom_in C-4
+zoom_out C-5
+
+pan 1
+menu 3
