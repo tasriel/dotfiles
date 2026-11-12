@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
+# Install Zulip Desktop from its apt repository.
 
-sudo apt install curl
-sudo curl -fL -o /etc/apt/trusted.gpg.d/zulip-desktop.asc \
-    https://download.zulip.com/desktop/apt/zulip-desktop.asc
-echo "deb https://download.zulip.com/desktop/apt stable main" | \
-    sudo tee /etc/apt/sources.list.d/zulip-desktop.list
-sudo apt update
-sudo apt install zulip
+# shellcheck source=lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
+
+apt_install curl gnupg
+add_apt_repo zulip-desktop https://download.zulip.com/desktop/apt/zulip-desktop.asc \
+    "https://download.zulip.com/desktop/apt stable main"
+apt_install zulip

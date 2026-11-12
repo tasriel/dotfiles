@@ -1,113 +1,109 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Run all setup steps in order and print a summary at the end.
+#
+# Usage: setup.sh              run every step
+#        setup.sh --list       show the step names
+#        setup.sh yazi nvim    run only the named steps
+#
+# A failing step does not stop the others; its output is kept in
+# ~/.cache/dotfiles-setup/<script>.log. The exit code is 1 if any step failed.
 
-# install basic requirements
-# sudo apt install -y git stow tmux curl xclip
+set -uo pipefail # no -e on purpose: one broken step must not block the rest
 
-SCRIPTS=(
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+LOG_DIR="$HOME/.cache/dotfiles-setup"
+
+# Order matters: base packages and symlinks first, Rust before everything that uses cargo
+STEPS=(
+    "install_base.sh"
+    "stow.bash --yes"
     "install_rust.sh"
+    "install_zsh.sh"
+    "install_fzf.sh"
+    "install_fnm.sh"
     "install_lazygit.sh"
     "install_yazi.sh"
+    "install_nvim.sh"
+    "install_tmux.sh"
+    "install_wezterm.sh"
+    "install_vlc.sh"
+    "install_feh.sh"
+    "install_spotify.sh"
+    "install_zulip.sh"
+    "install_element-x.sh"
+    "install_claude.sh"
+    "install_thunderbird.sh"
+    "install_latex.sh"
+    "install_platformio.sh"
+    "setup_nerd-font.sh"
+    "setup_wallpaper.sh"
 )
 
-TOTAL_SCRIPTS=${#SCRIPTS[@]}
-CURRENT=0
-FAILED_SCRIPT=""
-
-# Get the directory of the current script to ensure it runs from anywhere
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Calculate how many lines the header needs
-# 5 fixed lines (headers/borders) + number of scripts + 3 lines for progress bar
-HEADER_LINES=$(( 5 + TOTAL_SCRIPTS + 3 ))
-START_LINE_OUTPUT=$(( HEADER_LINES + 1 ))
-
-# Helper function to reset terminal scrolling behavior on exit
-cleanup() {
-    printf "\033[r" # Reset scrolling region to full screen
-    clear
+# "install_yazi.sh" -> "yazi", "stow.bash --yes" -> "stow"
+step_name() {
+    local script=${1%% *}
+    script=${script#install_}
+    script=${script#setup_}
+    script=${script%.sh}
+    script=${script%.bash}
+    echo "$script"
 }
-trap cleanup EXIT
 
-# Function to render the overview and the progress bar
-render_header() {
-    # Move cursor to top-left (Line 1, Column 1) without clearing the whole screen
-    printf "\033[1;1H"
-    
-    echo "========================================="
-    echo "       DOTFILES SETUP PROGRESS          "
-    echo "========================================="
-    
-    # Print the status of each script
-    local idx=0
-    for s in "${SCRIPTS[@]}"; do
-        if [ $idx -lt $CURRENT ]; then
-            echo -e "  [\e[32m✔\e[0m] $s (Installed)     "
-        elif [ $idx -eq $CURRENT ] && [ "$1" == "show_current" ]; then
-            echo -e "  [\e[33m➜\e[0m] \e[1;33m$s (Installing...)\e[0m"
-        elif [ "$1" == "failed" ] && [ "$s" == "$FAILED_SCRIPT" ]; then
-            echo -e "  [\e[31m✘\e[0m] \e[1;31m$s (FAILED)\e[0m        "
-        else
-            echo -e "  [ ] $s (Pending)     "
-        fi
-        ((idx++))
+if [[ ${1:-} == "--list" ]]; then
+    for step in "${STEPS[@]}"; do
+        step_name "$step"
     done
-    echo "-----------------------------------------"
+    exit 0
+fi
 
-    # CONDITION 2: Calculate and draw the progress bar
-    local percent=$(( (CURRENT * 100) / TOTAL_SCRIPTS ))
-    local bar_length=20
-    local filled=$(( (CURRENT * bar_length) / TOTAL_SCRIPTS ))
-    local empty=$(( bar_length - filled ))
-    
-    printf " Progress: ["
-    printf "%${filled}s" | tr ' ' '#'
-    printf "%${empty}s" | tr ' ' '-'
-    printf "] %d%%\n" "$percent"
-    echo "========================================="
+selected_names=("$@")
+
+is_selected() {
+    local name=$1
+    [[ ${#selected_names[@]} -eq 0 ]] && return 0
+    local selected
+    for selected in "${selected_names[@]}"; do
+        [[ $selected == "$name" ]] && return 0
+    done
+    return 1
 }
 
-# 1. Clear screen ONCE at the very beginning
-clear
+# Ask for the sudo password once and keep the ticket alive while the steps run
+sudo -v || exit 1
+(while kill -0 "$$" 2>/dev/null; do sudo -n true; sleep 50; done) &
+keepalive_pid=$!
+trap 'kill "$keepalive_pid" 2>/dev/null' EXIT
 
-# 2. Set the scrolling region PERMANENTLY for the whole lifecycle of the script
-printf "\033[%d;r" "$START_LINE_OUTPUT"
+mkdir -p "$LOG_DIR"
+succeeded=()
+failed=()
 
-# Main installation loop
-for script in "${SCRIPTS[@]}"; do
-    # Update the frozen header at the top
-    render_header "show_current"
-    
-    # Move cursor to the first line of the output region and clear old output
-    printf "\033[%d;1H" "$START_LINE_OUTPUT"
-    printf "\033[J"
+for step in "${STEPS[@]}"; do
+    name=$(step_name "$step")
+    is_selected "$name" || continue
 
-    # Check if the script exists and is executable
-    if [ -x "$SCRIPT_DIR/$script" ]; then
-        # CONDITION 3: Live output runs natively inside the lower scrolling region
-        "$SCRIPT_DIR/$script"
-        EXIT_CODE=$?
+    read -ra words <<<"$step" # script name followed by optional arguments
+    log_file="$LOG_DIR/${words[0]}.log"
+
+    echo
+    echo "==> [$name] running (log: $log_file)"
+    bash "$SCRIPT_DIR/${words[0]}" "${words[@]:1}" 2>&1 | tee "$log_file"
+    exit_code=${PIPESTATUS[0]}
+
+    if [[ $exit_code -eq 0 ]]; then
+        succeeded+=("$name")
     else
-        echo -e "\e[31mError: $script is not executable or does not exist.\e[0m"
-        EXIT_CODE=1
+        failed+=("$name")
+        echo "==> [$name] FAILED (exit code $exit_code)"
     fi
-
-    # ERROR HANDLING: Immediately abort if a script fails
-    if [ $EXIT_CODE -ne 0 ]; then
-        FAILED_SCRIPT="$script"
-        printf "\033[r" # Reset layout so error message is visible at the bottom
-        render_header "failed"
-        printf "\033[%d;1H" "$START_LINE_OUTPUT"
-        echo -e "\e[31;1mSetup aborted! Error in script: $script (Exit Code: $EXIT_CODE)\e[0m"
-        exit $EXIT_CODE
-    fi
-
-    # Increment the counter for the finished script
-    ((CURRENT++))
 done
 
-# Reset terminal layout, clear, and show 100% success
-printf "\033[r"
-clear
-CURRENT=$TOTAL_SCRIPTS
-render_header "completed"
-echo -e "\e[32;1mSetup completed successfully!\e[0m"
+echo
+echo "================ Summary ================"
+echo "OK:     ${succeeded[*]:-none}"
+echo "FAILED: ${failed[*]:-none}"
+
+if [[ ${#failed[@]} -gt 0 ]]; then
+    echo "Re-run a single step with: $0 <name>"
+    exit 1
+fi

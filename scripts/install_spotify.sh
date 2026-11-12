@@ -1,6 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Install the Spotify client from the official apt repository.
 
-curl -sS https://download.spotify.com/debian/pubkey_5384CE82BA52C83A.asc | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-echo "deb https://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+# shellcheck source=lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-sudo apt-get update && sudo apt-get install spotify-client
+apt_install curl gnupg
+add_apt_repo spotify https://download.spotify.com/debian/pubkey_5384CE82BA52C83A.asc \
+    "https://repository.spotify.com stable non-free"
+apt_install spotify-client

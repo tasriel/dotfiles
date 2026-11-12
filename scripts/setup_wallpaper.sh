@@ -1,27 +1,33 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Set up the dynamic wallpaper: build sunwait and add an hourly cron job
+# that runs set_wallpaper.sh.
 
-set -e
+# shellcheck source=lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-sudo apt update
-sudo apt install -y feh swaybg make gcc git
+apt_install swaybg make gcc git cron
 
-# install sunwait for dynamic wallpaper
-SUNWAIT_PATH="$HOME/.local/bin"
-mkdir -p "$SUNWAIT_PATH"
+# Build sunwait (computes sunrise and sunset)
+bin_dir="$HOME/.local/bin"
+mkdir -p "$bin_dir"
 
-if [ ! -f "$SUNWAIT_PATH/sunwait" ]; then
-    git clone https://github.com/risacher/sunwait.git /tmp/sunwait-src
-    cd /tmp/sunwait-src
-    make
-    install -m 755 sunwait "$SUNWAIT_PATH/"
-    rm -rf /tmp/sunwait-src
+if [[ ! -x $bin_dir/sunwait ]]; then
+    log "Building sunwait"
+    tmp_dir=$(mktemp -d)
+    trap 'rm -rf "$tmp_dir"' EXIT
+
+    git clone --depth 1 https://github.com/risacher/sunwait.git "$tmp_dir/sunwait"
+    make -C "$tmp_dir/sunwait"
+    install -m 755 "$tmp_dir/sunwait/sunwait" "$bin_dir/sunwait"
 fi
 
-# add cronjob to change wallpaper dynamically (inkl. Wayland/COSMIC Session-Variablen)
-SCRIPT_PATH="$HOME/dotfiles/scripts/set_wallpaper.sh"
-CRON_JOB="0 * * * * export PATH=\"$SUNWAIT_PATH:/usr/local/bin:/usr/bin:/bin\"; export DISPLAY=:0; export WAYLAND_DISPLAY=wayland-0; export XDG_RUNTIME_DIR=/run/user/\$(id -u); bash $SCRIPT_PATH"
+# Replace any old entry for this script. set_wallpaper.sh finds the Wayland
+# socket itself, so cron needs no session variables.
+script_path="$DOTFILES_DIR/scripts/set_wallpaper.sh"
+cron_line="0 * * * * PATH=$bin_dir:/usr/local/bin:/usr/bin:/bin bash $script_path"
 
-(crontab -l 2>/dev/null | grep -Fq "$SCRIPT_PATH") || {
-    (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
-    echo "Cronjob set successfully."
-}
+{ crontab -l 2>/dev/null | grep -vF "$script_path" || true; echo "$cron_line"; } | crontab -
+log "Cron job set (runs every full hour)"
+
+# Set the wallpaper right away (only works inside a running graphical session)
+bash "$script_path" || warn "Could not set the wallpaper now, the cron job will try again"

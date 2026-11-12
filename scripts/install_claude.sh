@@ -1,7 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Install Claude Desktop from Anthropic's apt repository.
 
-sudo apt install curl gnupg
-sudo curl -fsSLo /usr/share/keyrings/claude-desktop-archive-keyring.asc https://downloads.claude.ai/claude-desktop/key.asc
-gpg --show-keys /usr/share/keyrings/claude-desktop-archive-keyring.asc
-echo "deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/claude-desktop-archive-keyring.asc] https://downloads.claude.ai/claude-desktop/apt/stable stable main" | sudo tee /etc/apt/sources.list.d/claude-desktop.list
-sudo apt update && sudo apt install claude-desktop
+# shellcheck source=lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
+
+apt_install curl gnupg
+add_apt_repo claude-desktop https://downloads.claude.ai/claude-desktop/key.asc \
+    "https://downloads.claude.ai/claude-desktop/apt/stable stable main"
+apt_install claude-desktop

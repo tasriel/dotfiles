@@ -1,16 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Install rustup from apt and let it download the current stable toolchain.
+# The Ubuntu rustc/cargo packages are too old (1.75) for many crates, rustup is not.
 
-set -e
+# shellcheck source=lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-# Check if rustc or rustup is already installed
-if command -v rustc &> /dev/null || command -v rustup &> /dev/null; then
-    echo "Rust is already installed:"
-    echo "  rustc version: $(rustc --version 2>/dev/null || echo 'Not found')"
-    echo "  rustup version: $(rustup --version 2>/dev/null || echo 'Not found')"
-    echo "Skipping installation."
-    exit 0
-fi
+load_user_paths
 
-# If not installed, proceed with the official rustup installer
-echo "Rust not found. Starting installation..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+apt_install rustup
+
+log "Installing the stable Rust toolchain"
+rustup default stable
+
+log "Rust installed: $(rustc --version)"

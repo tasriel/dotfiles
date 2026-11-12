@@ -23,7 +23,13 @@ _darcs
 ^/COPYING
 
 /scripts
+/packages
 
 wallpaper
 
 .*\.png
+
+# X11-only configs of the old i3 setup: kept in the repo, not linked on Wayland/COSMIC
+/\.config/i3
+/\.config/polybar
+/\.config/dunst

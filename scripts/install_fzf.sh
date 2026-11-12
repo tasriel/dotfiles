@@ -1,24 +1,19 @@
 #!/usr/bin/env bash
+# Install fzf from git (the apt version is too old for `fzf --zsh`).
 
-# remove apt fzf installation
-sudo apt remove fzf -y
+# shellcheck source=lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-TARGET_DIR="$HOME/.fzf"
+fzf_dir="$HOME/.fzf"
 
-if [ ! -d "$TARGET_DIR" ]; then
-    echo "Cloning fzf to $TARGET_DIR ..."
-    git clone --depth 1 https://github.com/junegunn/fzf.git "$TARGET_DIR"
-else
-    echo "$TARGET_DIR already exists. Executing git pull ..."
-    cd "$TARGET_DIR" && git pull
+# Remove the apt package so it does not shadow the new binary
+if dpkg -s fzf >/dev/null 2>&1; then
+    sudo apt-get remove -y fzf
 fi
 
-echo "Running install script ..."
-"$TARGET_DIR/install" --bin --no-bash --no-zsh --no-fish
+apt_install git
+git_clone_or_update https://github.com/junegunn/fzf.git "$fzf_dir"
 
-if [ $? -eq 0 ]; then
-    echo "fzf installed successfully."
-else
-    echo "fzf installation failed."
-    exit 1
-fi
+# Only install the binary; shell integration is handled in .zshrc
+"$fzf_dir/install" --bin --no-bash --no-zsh --no-fish
+log "fzf installed"

@@ -1,13 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Install Element Desktop from the official apt repository.
 
-set -e
+# shellcheck source=lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-sudo apt install -y wget apt-transport-https
-
-sudo wget -O /usr/share/keyrings/element-io-archive-keyring.gpg https://packages.element.io/debian/element-io-archive-keyring.gpg
-
-echo "deb [signed-by=/usr/share/keyrings/element-io-archive-keyring.gpg] https://packages.element.io/debian/ default main" | sudo tee /etc/apt/sources.list.d/element-io.list
-
-sudo apt update
-
-sudo apt install element-desktop
+apt_install curl gnupg
+add_apt_repo element-io https://packages.element.io/debian/element-io-archive-keyring.gpg \
+    "https://packages.element.io/debian/ default main"
+apt_install element-desktop

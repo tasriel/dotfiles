@@ -1,36 +1,27 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Install the JetBrains Mono Nerd Font for the current user (no sudo needed).
 
-set -e
+# shellcheck source=lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-# cleanup old font folder
-# rm -rf ~/.local/share/fonts/JetBrainsMono
-# fc-cache -f -v
+font_dir="$HOME/.local/share/fonts/JetBrainsMono"
+font_url="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
 
-# Cleanup-Trap: Löscht das Temp-Verzeichnis immer, auch bei Fehlern
-TEMP_DIR=$(mktemp -d)
-trap 'rm -rf "$TEMP_DIR"' EXIT
+if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
+    log "JetBrains Mono Nerd Font is already installed"
+    exit 0
+fi
 
-sudo apt update && sudo apt install -y wget unzip
+apt_install curl unzip fontconfig
 
-# 1. Korrekte GitHub-URL
-JET_BRAINS_MONO_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
+tmp_dir=$(mktemp -d)
+trap 'rm -rf "$tmp_dir"' EXIT
 
-echo "Lade Schriftart herunter..."
-wget -q --show-progress -O "$TEMP_DIR/font.zip" "$JET_BRAINS_MONO_URL"
+log "Downloading JetBrains Mono Nerd Font"
+curl -fsSL --retry 3 -o "$tmp_dir/font.zip" "$font_url"
 
-echo "Entpacke Schriftart..."
-unzip -q -o "$TEMP_DIR/font.zip" -d "$TEMP_DIR"
+mkdir -p "$font_dir"
+unzip -q -o "$tmp_dir/font.zip" '*.ttf' -d "$font_dir"
+fc-cache -f "$font_dir"
 
-# Eigenes Zielverzeichnis erstellen für bessere Übersicht
-FONT_DIR="/usr/local/share/fonts/JetBrainsMono"
-sudo mkdir -p "$FONT_DIR"
-
-# 2. Sicheres Verschieben mit find (verhindert Globbing-Fehler)
-find "$TEMP_DIR" -type f \( -name "*.ttf" -o -name "*.otf" \) -exec sudo mv {} "$FONT_DIR/" \;
-
-# Dateirechte korrigieren & Font-Cache systemweit aktualisieren
-sudo chmod 644 "$FONT_DIR"/*
-sudo fc-cache -f -v
-
-echo "JetBrains Mono Nerd Font wurde erfolgreich unter $FONT_DIR installiert!"
-
+log "Font installed in $font_dir"

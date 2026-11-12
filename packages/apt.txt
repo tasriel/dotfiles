@@ -1,0 +1,40 @@
+# Packages installed in one go by scripts/install_base.sh.
+# One package per line, comments start with #.
+
+# Base tools
+git
+stow
+curl
+wget
+gnupg
+ca-certificates
+unzip
+build-essential
+pkg-config
+jq
+bc
+gawk
+cron
+pipx
+
+# Shell and terminal tools
+zsh
+tmux
+ripgrep
+fd-find
+zoxide
+playerctl            # tmux media widget
+fonts-noto-color-emoji
+
+# Yazi previews
+ffmpeg
+7zip
+imagemagick
+
+# Wayland helpers
+wl-clipboard
+swaybg               # wallpaper (scripts/set_wallpaper.sh)
+wofi
+
+# Apps whose config lives in this repo
+zathura

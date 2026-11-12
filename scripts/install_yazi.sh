@@ -1,24 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Install or update yazi from the official release .deb.
+# yazi is not in the Ubuntu repositories; apt installs the .deb, so it can be removed with apt.
+# System dependencies (ffmpeg, 7zip, ...) are in packages/apt.txt.
 
-set -e
+# shellcheck source=lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-# Optionale & benötigte Systemabhängigkeiten installieren
-sudo apt update
-sudo apt install -y ffmpeg 7zip jq fd-find ripgrep zoxide imagemagick wl-clipboard
+apt_install curl
 
-# Ubuntu/Debian-Spezialität: fdfind auf fd verlinken, falls noch nicht geschehen
-mkdir -p "$HOME/.local/bin"
-if command -v fdfind &> /dev/null && [ ! -e "$HOME/.local/bin/fd" ]; then
-    ln -s "$(which fdfind)" "$HOME/.local/bin/fd"
-fi
+tmp_dir=$(mktemp -d)
+trap 'rm -rf "$tmp_dir"' EXIT
+chmod 755 "$tmp_dir" # lets apt read the file without a sandbox warning
 
-# Yazi-Binärdateien über cargo-binstall installieren (setzt voraus, dass Rust/Cargo installiert ist)
-if ! command -v cargo &> /dev/null; then
-    echo "Fehler: Rust/Cargo ist nicht installiert. Bitte installiere Cargo zuerst."
-    exit 1
-fi
+log "Downloading yazi"
+curl -fsSL --retry 3 -o "$tmp_dir/yazi.deb" \
+    https://github.com/sxyazi/yazi/releases/latest/download/yazi-x86_64-unknown-linux-gnu.deb
 
-cargo install cargo-binstall --locked || true
-cargo binstall -y yazi-fm yazi-cli
-
-echo "Yazi erfolgreich installiert!"
+apt_install "$tmp_dir/yazi.deb"
+log "yazi installed: $(yazi --version)"
