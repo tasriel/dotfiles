@@ -1,0 +1,380 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cosmic-utils/cosmic-ctl/refs/heads/main/schema.json",
+  "operations": [
+    {
+      "component": "com.system76.CosmicAppletBattery",
+      "entries": {
+        "show_percentage": "true\n"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicSettings.Shortcuts",
+      "entries": {
+        "custom": "{\n    (\n        modifiers: [\n            Super,\n        ],\n        key: \"t\",\n    ): Disable,\n    (\n        modifiers: [\n            Super,\n        ],\n        key: \"Return\",\n    ): System(Terminal),\n}",
+        "system_actions": "{\n    Terminal: \"wezterm start --cwd .\",\n}"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicPortal",
+      "entries": {
+        "screenshot": "(\n    save_location: Pictures,\n    choice: Rectangle,\n    last_rectangle: Some((\n        left: 1017,\n        top: 462,\n        right: 1330,\n        bottom: 699,\n    )),\n)"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicTheme.Mode",
+      "entries": {
+        "auto_switch": "false",
+        "is_dark": "true"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicTk",
+      "entries": {
+        "header_size": "Standard",
+        "interface_density": "Standard"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicTheme.Light",
+      "entries": {
+        "accent": "(\n    base: \"#3D0C11FF\",\n    hover: \"#451D21FF\",\n    pressed: \"#7D6567FF\",\n    selected: \"#451D21FF\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#FFFFFFFF\",\n    on: \"#FFFFFFFF\",\n    disabled: \"#3D0C11FF\",\n    on_disabled: \"#9E8688FF\",\n    border: \"#3D0C11FF\",\n    disabled_border: \"#3D0C1180\",\n)",
+        "accent_button": "(\n    base: \"#3D0C11FF\",\n    hover: \"#451D21FF\",\n    pressed: \"#7D6567FF\",\n    selected: \"#451D21FF\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#DEDEDEFF\",\n    on: \"#E6EFFFFF\",\n    disabled: \"#3D0C11FF\",\n    on_disabled: \"#E6EFFF80\",\n    border: \"#3D0C11FF\",\n    disabled_border: \"#3D0C1180\",\n)",
+        "accent_text": "None",
+        "active_hint": "1",
+        "alpha_map": "(\n    extremely_low: 0.9,\n    extremely_low_2: 0.87692,\n    very_low: 0.85385,\n    very_low_2: 0.83076,\n    low: 0.80769,\n    low_2: 0.78461,\n    medium: 0.76154,\n    medium_2: 0.73846,\n    high: 0.71538,\n    high_2: 0.69231,\n    very_high: 0.66023,\n    very_high_2: 0.64615,\n    extremely_high: 0.62308,\n    extremely_high_2: 0.6,\n)",
+        "background": "(\n    base: \"#CED8EAFF\",\n    component: (\n        base: \"#F0F5FFFF\",\n        hover: \"#F1F6FFFF\",\n        pressed: \"#C0C4CCFF\",\n        selected: \"#F1F6FFFF\",\n        selected_text: \"#3D0C11FF\",\n        focus: \"#3D0C11FF\",\n        divider: \"#1F273633\",\n        on: \"#1F2736FF\",\n        disabled: \"#F0F5FF80\",\n        on_disabled: \"#1F2736A6\",\n        border: \"#161616FF\",\n        disabled_border: \"#16161680\",\n    ),\n    divider: \"#A7B0C2FF\",\n    on: \"#0B1220FF\",\n    small_widget: \"#CACACA40\",\n)",
+        "button": "(\n    base: \"#2E2E2E40\",\n    hover: \"#2B2B2B66\",\n    pressed: \"#6868689F\",\n    selected: \"#2B2B2B66\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#1F273633\",\n    on: \"#1F2736FF\",\n    disabled: \"#2E2E2E20\",\n    on_disabled: \"#1F2736A6\",\n    border: \"#161616FF\",\n    disabled_border: \"#16161680\",\n)",
+        "control_tint": "Some(\"#777777FF\")",
+        "corner_radii": "(\n    radius_0: (0.0, 0.0, 0.0, 0.0),\n    radius_xs: (2.0, 2.0, 2.0, 2.0),\n    radius_s: (2.0, 2.0, 2.0, 2.0),\n    radius_m: (2.0, 2.0, 2.0, 2.0),\n    radius_l: (2.0, 2.0, 2.0, 2.0),\n    radius_xl: (2.0, 2.0, 2.0, 2.0),\n)",
+        "destructive": "(\n    base: \"#78292EFF\",\n    hover: \"#743539FF\",\n    pressed: \"#9B7376FF\",\n    selected: \"#743539FF\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#FFFFFFFF\",\n    on: \"#FFFFFFFF\",\n    disabled: \"#78292EFF\",\n    on_disabled: \"#BC9496FF\",\n    border: \"#78292EFF\",\n    disabled_border: \"#78292E80\",\n)",
+        "destructive_button": "(\n    base: \"#78292EFF\",\n    hover: \"#743539FF\",\n    pressed: \"#9B7376FF\",\n    selected: \"#743539FF\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#DEDEDEFF\",\n    on: \"#FFFFFFFF\",\n    disabled: \"#78292EFF\",\n    on_disabled: \"#FFFFFF80\",\n    border: \"#78292EFF\",\n    disabled_border: \"#78292E80\",\n)",
+        "frosted": "Medium",
+        "frosted_applets": "false",
+        "frosted_panel": "false",
+        "frosted_system_interface": "false",
+        "frosted_windows": "false",
+        "gaps": "(0, 2)",
+        "icon_button": "(\n    base: \"#00000000\",\n    hover: \"#63636333\",\n    pressed: \"#BEBEBE80\",\n    selected: \"#63636333\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#16161633\",\n    on: \"#161616FF\",\n    disabled: \"#00000000\",\n    on_disabled: \"#161616A6\",\n    border: \"#161616FF\",\n    disabled_border: \"#16161680\",\n)",
+        "is_dark": "false",
+        "is_high_contrast": "false",
+        "link_button": "(\n    base: \"#00000000\",\n    hover: \"#00000000\",\n    pressed: \"#00000000\",\n    selected: \"#00000000\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#3D0C1133\",\n    on: \"#3D0C11FF\",\n    disabled: \"#00000000\",\n    on_disabled: \"#1F060880\",\n    border: \"#161616FF\",\n    disabled_border: \"#16161680\",\n)",
+        "list_button": "(\n    base: \"#00000000\",\n    hover: \"#00000000\",\n    pressed: \"#BEBEBE80\",\n    selected: \"#00000000\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#1F273633\",\n    on: \"#1F2736FF\",\n    disabled: \"#00000000\",\n    on_disabled: \"#1F2736A6\",\n    border: \"#161616FF\",\n    disabled_border: \"#16161680\",\n)",
+        "name": "\"cosmic-light\"",
+        "palette": "(\n    name: \"cosmic-light\",\n    bright_red: \"#890418FF\",\n    bright_green: \"#00572CFF\",\n    bright_orange: \"#792C00FF\",\n    gray_1: \"#DDDDDDFF\",\n    gray_2: \"#E8E8E8FF\",\n    neutral_0: \"#FFFFFFFF\",\n    neutral_1: \"#E2E2E2FF\",\n    neutral_2: \"#C6C6C6FF\",\n    neutral_3: \"#ABABABFF\",\n    neutral_4: \"#919191FF\",\n    neutral_5: \"#777777FF\",\n    neutral_6: \"#5E5E5EFF\",\n    neutral_7: \"#474747FF\",\n    neutral_8: \"#303030FF\",\n    neutral_9: \"#1B1B1BFF\",\n    neutral_10: \"#000000FF\",\n    accent_blue: \"#00525AFF\",\n    accent_indigo: \"#2E496DFF\",\n    accent_purple: \"#68217CFF\",\n    accent_pink: \"#86043AFF\",\n    accent_red: \"#78292EFF\",\n    accent_orange: \"#624000FF\",\n    accent_yellow: \"#534800FF\",\n    accent_green: \"#185529FF\",\n    accent_warm_grey: \"#554742FF\",\n    ext_warm_grey: \"#9B8E8AFF\",\n    ext_orange: \"#FBB86CFF\",\n    ext_yellow: \"#F7E062FF\",\n    ext_blue: \"#6ACAD8FF\",\n    ext_purple: \"#D58CFFFF\",\n    ext_pink: \"#FF9CDDFF\",\n    ext_indigo: \"#95C4FCFF\",\n)",
+        "primary": "(\n    base: \"#E1EBFEFF\",\n    component: (\n        base: \"#D1DBEDFF\",\n        hover: \"#D5DEEFFF\",\n        pressed: \"#DAE2F1FF\",\n        selected: \"#D5DEEFFF\",\n        selected_text: \"#3D0C11FF\",\n        focus: \"#3D0C11FF\",\n        divider: \"#050B1833\",\n        on: \"#050B18FF\",\n        disabled: \"#D1DBED80\",\n        on_disabled: \"#050B18A6\",\n        border: \"#161616FF\",\n        disabled_border: \"#16161680\",\n    ),\n    divider: \"#B4BCCBFF\",\n    on: \"#000000FF\",\n    small_widget: \"#DDDDDD40\",\n)",
+        "secondary": "(\n    base: \"#FAFCFFFF\",\n    component: (\n        base: \"#F3F5F8FF\",\n        hover: \"#F4F6F9FF\",\n        pressed: \"#F6F7FAFF\",\n        selected: \"#F4F6F9FF\",\n        selected_text: \"#3D0C11FF\",\n        focus: \"#3D0C11FF\",\n        divider: \"#1F273633\",\n        on: \"#1F2736FF\",\n        disabled: \"#F3F5F880\",\n        on_disabled: \"#1F2736A6\",\n        border: \"#161616FF\",\n        disabled_border: \"#16161680\",\n    ),\n    divider: \"#CFD2D8FF\",\n    on: \"#242C3CFF\",\n    small_widget: \"#EEEEEE40\",\n)",
+        "shade": "(\n    red: 0.0,\n    green: 0.0,\n    blue: 0.0,\n    alpha: 0.08,\n)",
+        "spacing": "(\n    space_none: 0,\n    space_xxxs: 4,\n    space_xxs: 8,\n    space_xs: 12,\n    space_s: 16,\n    space_m: 24,\n    space_l: 32,\n    space_xl: 48,\n    space_xxl: 64,\n    space_xxxl: 128,\n)",
+        "success": "(\n    base: \"#185529FF\",\n    hover: \"#275835FF\",\n    pressed: \"#6B8973FF\",\n    selected: \"#275835FF\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#FFFFFFFF\",\n    on: \"#FFFFFFFF\",\n    disabled: \"#185529FF\",\n    on_disabled: \"#8CAA94FF\",\n    border: \"#185529FF\",\n    disabled_border: \"#18552980\",\n)",
+        "success_button": "(\n    base: \"#185529FF\",\n    hover: \"#275835FF\",\n    pressed: \"#6B8973FF\",\n    selected: \"#275835FF\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#DEDEDEFF\",\n    on: \"#FFFFFFFF\",\n    disabled: \"#185529FF\",\n    on_disabled: \"#FFFFFF80\",\n    border: \"#185529FF\",\n    disabled_border: \"#18552980\",\n)",
+        "text_button": "(\n    base: \"#00000000\",\n    hover: \"#63636333\",\n    pressed: \"#BEBEBE80\",\n    selected: \"#63636333\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#3D0C1133\",\n    on: \"#3D0C11FF\",\n    disabled: \"#00000000\",\n    on_disabled: \"#3D0C11A6\",\n    border: \"#161616FF\",\n    disabled_border: \"#16161680\",\n)",
+        "text_tint": "Some(\"#2C3444FF\")",
+        "transparent_background": "(\n    base: \"#CED8EAC2\",\n    component: (\n        base: \"#F0F5FFC2\",\n        hover: \"#EBF0F8C8\",\n        pressed: \"#E8ECF3CE\",\n        selected: \"#EBF0F8C8\",\n        selected_text: \"#3D0C11FF\",\n        focus: \"#3D0C11FF\",\n        divider: \"#1F273633\",\n        on: \"#1F2736FF\",\n        disabled: \"#F0F5FF61\",\n        on_disabled: \"#1F2736A6\",\n        border: \"#161616FF\",\n        disabled_border: \"#16161680\",\n    ),\n    divider: \"#9DA6B7CE\",\n    on: \"#0B1220FF\",\n    small_widget: \"#CACACA40\",\n)",
+        "transparent_primary": "(\n    base: \"#E1EBFEFF\",\n    component: (\n        base: \"#D1DBEDFF\",\n        hover: \"#D1DBEDFF\",\n        pressed: \"#D1DBEDFF\",\n        selected: \"#D1DBEDFF\",\n        selected_text: \"#3D0C11FF\",\n        focus: \"#3D0C11FF\",\n        divider: \"#0D142233\",\n        on: \"#0D1422FF\",\n        disabled: \"#D1DBED80\",\n        on_disabled: \"#0D1422A6\",\n        border: \"#161616FF\",\n        disabled_border: \"#16161680\",\n    ),\n    divider: \"#B9C3D4FF\",\n    on: \"#18202FFF\",\n    small_widget: \"#DDDDDD40\",\n)",
+        "transparent_secondary": "(\n    base: \"#FAFCFFFF\",\n    component: (\n        base: \"#F3F5F8FF\",\n        hover: \"#F4F6F9FF\",\n        pressed: \"#F6F7FAFF\",\n        selected: \"#F4F6F9FF\",\n        selected_text: \"#3D0C11FF\",\n        focus: \"#3D0C11FF\",\n        divider: \"#1F273633\",\n        on: \"#1F2736FF\",\n        disabled: \"#F3F5F880\",\n        on_disabled: \"#1F2736A6\",\n        border: \"#161616FF\",\n        disabled_border: \"#16161680\",\n    ),\n    divider: \"#CFD2D8FF\",\n    on: \"#242C3CFF\",\n    small_widget: \"#EEEEEE40\",\n)",
+        "warning": "(\n    base: \"#534800FF\",\n    hover: \"#564D14FF\",\n    pressed: \"#88835FFF\",\n    selected: \"#564D14FF\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#FFFFFFFF\",\n    on: \"#FFFFFFFF\",\n    disabled: \"#534800FF\",\n    on_disabled: \"#A9A47FFF\",\n    border: \"#534800FF\",\n    disabled_border: \"#53480080\",\n)",
+        "warning_button": "(\n    base: \"#534800FF\",\n    hover: \"#564D14FF\",\n    pressed: \"#88835FFF\",\n    selected: \"#564D14FF\",\n    selected_text: \"#3D0C11FF\",\n    focus: \"#3D0C11FF\",\n    divider: \"#000000FF\",\n    on: \"#FFFFFFFF\",\n    disabled: \"#534800FF\",\n    on_disabled: \"#FFFFFF80\",\n    border: \"#534800FF\",\n    disabled_border: \"#53480080\",\n)",
+        "window_hint": "None"
+      },
+      "operation": "write",
+      "version": 2,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicAppletTime",
+      "entries": {
+        "first_day_of_week": "0",
+        "military_time": "true",
+        "show_seconds": "false"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicTheme.Light.Builder",
+      "entries": {
+        "accent": "Some(\"#3D0C11FF\")",
+        "active_hint": "1",
+        "alpha_map": "(\n    extremely_low: 0.9,\n    extremely_low_2: 0.87692,\n    very_low: 0.85385,\n    very_low_2: 0.83076,\n    low: 0.80769,\n    low_2: 0.78461,\n    medium: 0.76154,\n    medium_2: 0.73846,\n    high: 0.71538,\n    high_2: 0.69231,\n    very_high: 0.66023,\n    very_high_2: 0.64615,\n    extremely_high: 0.62308,\n    extremely_high_2: 0.6,\n)",
+        "bg_color": "Some(\"#CED8EAFF\")",
+        "corner_radii": "(\n    radius_0: (0.0, 0.0, 0.0, 0.0),\n    radius_xs: (2.0, 2.0, 2.0, 2.0),\n    radius_s: (2.0, 2.0, 2.0, 2.0),\n    radius_m: (2.0, 2.0, 2.0, 2.0),\n    radius_l: (2.0, 2.0, 2.0, 2.0),\n    radius_xl: (2.0, 2.0, 2.0, 2.0),\n)",
+        "destructive": "Some(\"#78292EFF\")",
+        "frosted": "Medium",
+        "frosted_applets": "false",
+        "frosted_panel": "false",
+        "frosted_system_interface": "false",
+        "frosted_windows": "false",
+        "gaps": "(0, 2)",
+        "neutral_tint": "Some(\"#777777FF\")",
+        "palette": "Light((\n    name: \"cosmic-light\",\n    bright_red: \"#890418FF\",\n    bright_green: \"#00572CFF\",\n    bright_orange: \"#792C00FF\",\n    gray_1: \"#DDDDDDFF\",\n    gray_2: \"#E8E8E8FF\",\n    neutral_0: \"#FFFFFFFF\",\n    neutral_1: \"#E2E2E2FF\",\n    neutral_2: \"#C6C6C6FF\",\n    neutral_3: \"#ABABABFF\",\n    neutral_4: \"#919191FF\",\n    neutral_5: \"#777777FF\",\n    neutral_6: \"#5E5E5EFF\",\n    neutral_7: \"#474747FF\",\n    neutral_8: \"#303030FF\",\n    neutral_9: \"#1B1B1BFF\",\n    neutral_10: \"#000000FF\",\n    accent_blue: \"#00525AFF\",\n    accent_indigo: \"#2E496DFF\",\n    accent_purple: \"#68217CFF\",\n    accent_pink: \"#86043AFF\",\n    accent_red: \"#78292EFF\",\n    accent_orange: \"#624000FF\",\n    accent_yellow: \"#534800FF\",\n    accent_green: \"#185529FF\",\n    accent_warm_grey: \"#554742FF\",\n    ext_warm_grey: \"#9B8E8AFF\",\n    ext_orange: \"#FBB86CFF\",\n    ext_yellow: \"#F7E062FF\",\n    ext_blue: \"#6ACAD8FF\",\n    ext_purple: \"#D58CFFFF\",\n    ext_pink: \"#FF9CDDFF\",\n    ext_indigo: \"#95C4FCFF\",\n))",
+        "primary_container_bg": "None",
+        "secondary_container_bg": "None",
+        "spacing": "(\n    space_none: 0,\n    space_xxxs: 4,\n    space_xxs: 8,\n    space_xs: 12,\n    space_s: 16,\n    space_m: 24,\n    space_l: 32,\n    space_xl: 48,\n    space_xxl: 64,\n    space_xxxl: 128,\n)",
+        "success": "Some(\"#185529FF\")",
+        "text_tint": "Some(\"#2C3444FF\")",
+        "warning": "Some(\"#534800FF\")",
+        "window_hint": "None"
+      },
+      "operation": "write",
+      "version": 2,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicBackground.Dark",
+      "entries": {
+        "all": "(\n    output: \"all\",\n    source: Path(\"/usr/share/backgrounds/cosmic/phytoplankton_bloom_nasa_oli2_20240121.jpg\"),\n    filter_by_theme: true,\n    rotation_frequency: 300,\n    transition_duration: 500,\n    filter_method: Lanczos,\n    scaling_mode: Zoom,\n    sampling_method: Alphanumeric,\n)",
+        "same-on-all": "true"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicPanel",
+      "entries": {
+        "entries": "[\n    \"Panel\",\n]"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicBackground.Light",
+      "entries": {
+        "all": "(\n    output: \"all\",\n    source: Path(\"/usr/share/backgrounds/cosmic/phytoplankton_bloom_nasa_oli2_20240121.jpg\"),\n    filter_by_theme: true,\n    rotation_frequency: 300,\n    transition_duration: 500,\n    filter_method: Lanczos,\n    scaling_mode: Zoom,\n    sampling_method: Alphanumeric,\n)",
+        "same-on-all": "true"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicBackground",
+      "entries": {
+        "all": "(\n    output: \"all\",\n    source: Path(\"/usr/share/backgrounds/cosmic/phytoplankton_bloom_nasa_oli2_20240121.jpg\"),\n    filter_by_theme: true,\n    rotation_frequency: 300,\n    filter_method: Lanczos,\n    scaling_mode: Zoom,\n    sampling_method: Alphanumeric,\n)",
+        "same-on-all": "true"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicComp",
+      "entries": {
+        "accessibility_zoom": "(\n    start_on_login: false,\n    show_overlay: false,\n    increment: 50,\n    view_moves: Continuously,\n    enable_mouse_zoom_shortcuts: true,\n)",
+        "autotile": "true",
+        "autotile_behavior": "PerWorkspace",
+        "cursor_follows_focus": "false",
+        "focus_follows_cursor": "true",
+        "focus_follows_cursor_delay": "0",
+        "pinned_workspaces": "[\n    (\n        output: (\n            name: \"eDP-1\",\n            edid: Some((\n                manufacturer: ('B', 'O', 'E'),\n                product: 2126,\n                serial: None,\n                manufacture_week: 47,\n                manufacture_year: 2018,\n                model_year: None,\n            )),\n        ),\n        tiling_enabled: true,\n        id: Some(\"2a03c6\"),\n        name: None,\n    ),\n    (\n        output: (\n            name: \"eDP-1\",\n            edid: Some((\n                manufacturer: ('B', 'O', 'E'),\n                product: 2126,\n                serial: None,\n                manufacture_week: 47,\n                manufacture_year: 2018,\n                model_year: None,\n            )),\n        ),\n        tiling_enabled: true,\n        id: Some(\"4248a3\"),\n        name: None,\n    ),\n    (\n        output: (\n            name: \"eDP-1\",\n            edid: Some((\n                manufacturer: ('B', 'O', 'E'),\n                product: 2126,\n                serial: None,\n                manufacture_week: 47,\n                manufacture_year: 2018,\n                model_year: None,\n            )),\n        ),\n        tiling_enabled: true,\n        id: Some(\"10562b2\"),\n        name: None,\n    ),\n    (\n        output: (\n            name: \"eDP-1\",\n            edid: Some((\n                manufacturer: ('B', 'O', 'E'),\n                product: 2126,\n                serial: None,\n                manufacture_week: 47,\n                manufacture_year: 2018,\n                model_year: None,\n            )),\n        ),\n        tiling_enabled: true,\n        id: Some(\"1a9ab0e\"),\n        name: None,\n    ),\n    (\n        output: (\n            name: \"eDP-1\",\n            edid: Some((\n                manufacturer: ('B', 'O', 'E'),\n                product: 2126,\n                serial: None,\n                manufacture_week: 47,\n                manufacture_year: 2018,\n                model_year: None,\n            )),\n        ),\n        tiling_enabled: true,\n        id: Some(\"e5c9d3\"),\n        name: None,\n    ),\n    (\n        output: (\n            name: \"eDP-1\",\n            edid: Some((\n                manufacturer: ('B', 'O', 'E'),\n                product: 2126,\n                serial: None,\n                manufacture_week: 47,\n                manufacture_year: 2018,\n                model_year: None,\n            )),\n        ),\n        tiling_enabled: true,\n        id: Some(\"be0f35\"),\n        name: None,\n    ),\n    (\n        output: (\n            name: \"eDP-1\",\n            edid: Some((\n                manufacturer: ('B', 'O', 'E'),\n                product: 2126,\n                serial: None,\n                manufacture_week: 47,\n                manufacture_year: 2018,\n                model_year: None,\n            )),\n        ),\n        tiling_enabled: true,\n        id: Some(\"8956ba\"),\n        name: None,\n    ),\n    (\n        output: (\n            name: \"eDP-1\",\n            edid: Some((\n                manufacturer: ('B', 'O', 'E'),\n                product: 2126,\n                serial: None,\n                manufacture_week: 47,\n                manufacture_year: 2018,\n                model_year: None,\n            )),\n        ),\n        tiling_enabled: true,\n        id: Some(\"328148\"),\n        name: None,\n    ),\n    (\n        output: (\n            name: \"eDP-1\",\n            edid: Some((\n                manufacturer: ('B', 'O', 'E'),\n                product: 2126,\n                serial: None,\n                manufacture_week: 47,\n                manufacture_year: 2018,\n                model_year: None,\n            )),\n        ),\n        tiling_enabled: true,\n        id: Some(\"13e613f\"),\n        name: None,\n    ),\n]",
+        "workspaces": "(\n    workspace_mode: OutputBound,\n    workspace_layout: Horizontal,\n    action_on_typing: r#None,\n    workspace_wraparound: true,\n)",
+        "xkb_config": "(\n    rules: \"\",\n    model: \"\",\n    layout: \"de\",\n    variant: \"\",\n    options: Some(\"lv3:ralt_switch,compose:rctrl\"),\n    repeat_delay: 600,\n    repeat_rate: 25,\n)"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicTheme.Dark.Builder",
+      "entries": {
+        "accent": "Some((\n    red: 0.38823533,\n    green: 0.81568635,\n    blue: 0.8745099,\n))",
+        "active_hint": "1",
+        "alpha_map": "(\n    extremely_low: 0.9,\n    extremely_low_2: 0.87692,\n    very_low: 0.85385,\n    very_low_2: 0.83076,\n    low: 0.80769,\n    low_2: 0.78461,\n    medium: 0.76154,\n    medium_2: 0.73846,\n    high: 0.71538,\n    high_2: 0.69231,\n    very_high: 0.66023,\n    very_high_2: 0.64615,\n    extremely_high: 0.62308,\n    extremely_high_2: 0.6,\n)",
+        "bg_color": "None",
+        "corner_radii": "(\n    radius_0: (0.0, 0.0, 0.0, 0.0),\n    radius_xs: (2.0, 2.0, 2.0, 2.0),\n    radius_s: (2.0, 2.0, 2.0, 2.0),\n    radius_m: (2.0, 2.0, 2.0, 2.0),\n    radius_l: (2.0, 2.0, 2.0, 2.0),\n    radius_xl: (2.0, 2.0, 2.0, 2.0),\n)",
+        "destructive": "None",
+        "frosted": "Medium",
+        "frosted_applets": "false",
+        "frosted_panel": "false",
+        "frosted_system_interface": "false",
+        "frosted_windows": "false",
+        "gaps": "(0, 2)",
+        "neutral_tint": "None",
+        "palette": "Dark((\n    name: \"cosmic-dark\",\n    bright_red: \"#FFA09AFF\",\n    bright_green: \"#5EDB8CFF\",\n    bright_orange: \"#FFA37DFF\",\n    gray_1: \"#1B1B1BFF\",\n    gray_2: \"#262626FF\",\n    neutral_0: \"#000000FF\",\n    neutral_1: \"#030303FF\",\n    neutral_2: \"#161616FF\",\n    neutral_3: \"#2E2E2EFF\",\n    neutral_4: \"#484848FF\",\n    neutral_5: \"#636363FF\",\n    neutral_6: \"#808080FF\",\n    neutral_7: \"#9E9E9EFF\",\n    neutral_8: \"#BEBEBEFF\",\n    neutral_9: \"#DEDEDEFF\",\n    neutral_10: \"#FFFFFFFF\",\n    accent_blue: \"#63D0DFFF\",\n    accent_indigo: \"#A1C0EBFF\",\n    accent_purple: \"#E79CFEFF\",\n    accent_pink: \"#FF9CB1FF\",\n    accent_red: \"#FDA1A0FF\",\n    accent_orange: \"#FFAD00FF\",\n    accent_yellow: \"#F7E062FF\",\n    accent_green: \"#92CF9CFF\",\n    accent_warm_grey: \"#CABAB4FF\",\n    ext_warm_grey: \"#9B8E8AFF\",\n    ext_orange: \"#FFAD00FF\",\n    ext_yellow: \"#FEDB40FF\",\n    ext_blue: \"#48B9C7FF\",\n    ext_purple: \"#CF7DFFFF\",\n    ext_pink: \"#F93A83FF\",\n    ext_indigo: \"#3E88FFFF\",\n))",
+        "primary_container_bg": "None",
+        "secondary_container_bg": "None",
+        "spacing": "(\n    space_none: 0,\n    space_xxxs: 4,\n    space_xxs: 8,\n    space_xs: 12,\n    space_s: 16,\n    space_m: 24,\n    space_l: 32,\n    space_xl: 48,\n    space_xxl: 64,\n    space_xxxl: 128,\n)",
+        "success": "None",
+        "text_tint": "None",
+        "warning": "None",
+        "window_hint": "None"
+      },
+      "operation": "write",
+      "version": 2,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicPanel.Panel",
+      "entries": {
+        "anchor": "Top",
+        "anchor_gap": "false",
+        "autohide": "Never",
+        "autohide_behavior": "(\n    wait_time: 1000,\n    transition_time: 200,\n    handle_size: 4,\n    unhide_delay: 200,\n)",
+        "autohover_delay_ms": "Some(500)",
+        "background": "ThemeDefault",
+        "border_radius": "0",
+        "border_width": "0.0",
+        "exclusive_zone": "true",
+        "expand_to_edges": "true",
+        "keep_style_on_maximize": "false",
+        "keyboard_interactivity": "OnDemand",
+        "layer": "Top",
+        "margin": "0",
+        "name": "\"Panel\"",
+        "opacity": "1.0",
+        "output": "All",
+        "padding": "0",
+        "padding_overlap": "0.5",
+        "plugins_center": "Some([\n    \"com.system76.CosmicAppletTime\",\n])",
+        "plugins_wings": "Some(([\n    \"com.system76.CosmicPanelWorkspacesButton\",\n    \"com.system76.CosmicAppletWorkspaces\",\n], [\n    \"com.system76.CosmicPanelAppButton\",\n    \"com.system76.CosmicAppletTiling\",\n    \"com.system76.CosmicAppletStatusArea\",\n    \"com.system76.CosmicAppletAudio\",\n    \"com.system76.CosmicAppletBluetooth\",\n    \"com.system76.CosmicAppletNetwork\",\n    \"com.system76.CosmicAppletBattery\",\n    \"com.system76.CosmicAppletNotifications\",\n    \"com.system76.CosmicAppletPower\",\n]))",
+        "size": "XS",
+        "size_center": "None",
+        "size_wings": "None",
+        "spacing": "0"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicTheme.Dark",
+      "entries": {
+        "accent": "(\n    base: \"#63D0DFFF\",\n    hover: \"#63BAC6FF\",\n    pressed: \"#3C737AFF\",\n    selected: \"#63BAC6FF\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#000000FF\",\n    on: \"#000000FF\",\n    disabled: \"#63D0DFFF\",\n    on_disabled: \"#326870FF\",\n    border: \"#63D0DFFF\",\n    disabled_border: \"#63D0DF80\",\n)",
+        "accent_button": "(\n    base: \"#63D0DFFF\",\n    hover: \"#63BAC6FF\",\n    pressed: \"#3C737AFF\",\n    selected: \"#63BAC6FF\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#030303FF\",\n    on: \"#030303FF\",\n    disabled: \"#63D0DFFF\",\n    on_disabled: \"#03030380\",\n    border: \"#63D0DFFF\",\n    disabled_border: \"#63D0DF80\",\n)",
+        "accent_text": "None",
+        "active_hint": "1",
+        "alpha_map": "(\n    extremely_low: 0.9,\n    extremely_low_2: 0.87692,\n    very_low: 0.85385,\n    very_low_2: 0.83076,\n    low: 0.80769,\n    low_2: 0.78461,\n    medium: 0.76154,\n    medium_2: 0.73846,\n    high: 0.71538,\n    high_2: 0.69231,\n    very_high: 0.66023,\n    very_high_2: 0.64615,\n    extremely_high: 0.62308,\n    extremely_high_2: 0.6,\n)",
+        "background": "(\n    base: \"#1B1B1BFF\",\n    component: (\n        base: \"#2E2E2EFF\",\n        hover: \"#434343FF\",\n        pressed: \"#585858FF\",\n        selected: \"#434343FF\",\n        selected_text: \"#63D0DFFF\",\n        focus: \"#63D0DFFF\",\n        divider: \"#C0C0C033\",\n        on: \"#C0C0C0FF\",\n        disabled: \"#2E2E2E80\",\n        on_disabled: \"#C0C0C0A6\",\n        border: \"#BEBEBEFF\",\n        disabled_border: \"#BEBEBE80\",\n    ),\n    divider: \"#444444FF\",\n    on: \"#E7E7E7FF\",\n    small_widget: \"#27272740\",\n)",
+        "button": "(\n    base: \"#9E9E9E40\",\n    hover: \"#63636366\",\n    pressed: \"#2B2B2B9F\",\n    selected: \"#63636366\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#C0C0C033\",\n    on: \"#C0C0C0FF\",\n    disabled: \"#9E9E9E20\",\n    on_disabled: \"#C0C0C0A6\",\n    border: \"#BEBEBEFF\",\n    disabled_border: \"#BEBEBE80\",\n)",
+        "control_tint": "None",
+        "corner_radii": "(\n    radius_0: (0.0, 0.0, 0.0, 0.0),\n    radius_xs: (2.0, 2.0, 2.0, 2.0),\n    radius_s: (2.0, 2.0, 2.0, 2.0),\n    radius_m: (2.0, 2.0, 2.0, 2.0),\n    radius_l: (2.0, 2.0, 2.0, 2.0),\n    radius_xl: (2.0, 2.0, 2.0, 2.0),\n)",
+        "destructive": "(\n    base: \"#FFA09AFF\",\n    hover: \"#E0948FFF\",\n    pressed: \"#8A5B58FF\",\n    selected: \"#E0948FFF\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#000000FF\",\n    on: \"#000000FF\",\n    disabled: \"#FFA09AFF\",\n    on_disabled: \"#80504DFF\",\n    border: \"#FFA09AFF\",\n    disabled_border: \"#FFA09A80\",\n)",
+        "destructive_button": "(\n    base: \"#FFA09AFF\",\n    hover: \"#E0948FFF\",\n    pressed: \"#8A5B58FF\",\n    selected: \"#E0948FFF\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#030303FF\",\n    on: \"#000000FF\",\n    disabled: \"#FFA09AFF\",\n    on_disabled: \"#00000080\",\n    border: \"#FFA09AFF\",\n    disabled_border: \"#FFA09A80\",\n)",
+        "frosted": "Medium",
+        "frosted_applets": "false",
+        "frosted_panel": "false",
+        "frosted_system_interface": "false",
+        "frosted_windows": "false",
+        "gaps": "(0, 2)",
+        "icon_button": "(\n    base: \"#00000000\",\n    hover: \"#63636333\",\n    pressed: \"#16161680\",\n    selected: \"#63636333\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#BEBEBE33\",\n    on: \"#BEBEBEFF\",\n    disabled: \"#00000000\",\n    on_disabled: \"#BEBEBEA6\",\n    border: \"#BEBEBEFF\",\n    disabled_border: \"#BEBEBE80\",\n)",
+        "is_dark": "true",
+        "is_high_contrast": "false",
+        "link_button": "(\n    base: \"#00000000\",\n    hover: \"#00000000\",\n    pressed: \"#00000000\",\n    selected: \"#00000000\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#63D0DF33\",\n    on: \"#63D0DFFF\",\n    disabled: \"#00000000\",\n    on_disabled: \"#32687080\",\n    border: \"#BEBEBEFF\",\n    disabled_border: \"#BEBEBE80\",\n)",
+        "list_button": "(\n    base: \"#00000000\",\n    hover: \"#00000000\",\n    pressed: \"#16161680\",\n    selected: \"#00000000\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#C0C0C033\",\n    on: \"#C0C0C0FF\",\n    disabled: \"#00000000\",\n    on_disabled: \"#C0C0C0A6\",\n    border: \"#BEBEBEFF\",\n    disabled_border: \"#BEBEBE80\",\n)",
+        "name": "\"cosmic-dark\"",
+        "palette": "(\n    name: \"cosmic-dark\",\n    bright_red: \"#FFA09AFF\",\n    bright_green: \"#5EDB8CFF\",\n    bright_orange: \"#FFA37DFF\",\n    gray_1: \"#1B1B1BFF\",\n    gray_2: \"#262626FF\",\n    neutral_0: \"#000000FF\",\n    neutral_1: \"#030303FF\",\n    neutral_2: \"#161616FF\",\n    neutral_3: \"#2E2E2EFF\",\n    neutral_4: \"#484848FF\",\n    neutral_5: \"#636363FF\",\n    neutral_6: \"#808080FF\",\n    neutral_7: \"#9E9E9EFF\",\n    neutral_8: \"#BEBEBEFF\",\n    neutral_9: \"#DEDEDEFF\",\n    neutral_10: \"#FFFFFFFF\",\n    accent_blue: \"#63D0DFFF\",\n    accent_indigo: \"#A1C0EBFF\",\n    accent_purple: \"#E79CFEFF\",\n    accent_pink: \"#FF9CB1FF\",\n    accent_red: \"#FDA1A0FF\",\n    accent_orange: \"#FFAD00FF\",\n    accent_yellow: \"#F7E062FF\",\n    accent_green: \"#92CF9CFF\",\n    accent_warm_grey: \"#CABAB4FF\",\n    ext_warm_grey: \"#9B8E8AFF\",\n    ext_orange: \"#FFAD00FF\",\n    ext_yellow: \"#FEDB40FF\",\n    ext_blue: \"#48B9C7FF\",\n    ext_purple: \"#CF7DFFFF\",\n    ext_pink: \"#F93A83FF\",\n    ext_indigo: \"#3E88FFFF\",\n)",
+        "primary": "(\n    base: \"#272727FF\",\n    component: (\n        base: \"#363636FF\",\n        hover: \"#4A4A4AFF\",\n        pressed: \"#5E5E5EFF\",\n        selected: \"#4A4A4AFF\",\n        selected_text: \"#63D0DFFF\",\n        focus: \"#63D0DFFF\",\n        divider: \"#FFFFFF33\",\n        on: \"#FFFFFFFF\",\n        disabled: \"#36363680\",\n        on_disabled: \"#FFFFFFA6\",\n        border: \"#BEBEBEFF\",\n        disabled_border: \"#BEBEBE80\",\n    ),\n    divider: \"#525252FF\",\n    on: \"#FFFFFFFF\",\n    small_widget: \"#34343440\",\n)",
+        "secondary": "(\n    base: \"#343434FF\",\n    component: (\n        base: \"#3B3B3BFF\",\n        hover: \"#4F4F4FFF\",\n        pressed: \"#626262FF\",\n        selected: \"#4F4F4FFF\",\n        selected_text: \"#63D0DFFF\",\n        focus: \"#63D0DFFF\",\n        divider: \"#D0D0D033\",\n        on: \"#D0D0D0FF\",\n        disabled: \"#3B3B3B80\",\n        on_disabled: \"#D0D0D0A6\",\n        border: \"#BEBEBEFF\",\n        disabled_border: \"#BEBEBE80\",\n    ),\n    divider: \"#515151FF\",\n    on: \"#C7C7C7FF\",\n    small_widget: \"#41414140\",\n)",
+        "shade": "(\n    red: 0.0,\n    green: 0.0,\n    blue: 0.0,\n    alpha: 0.32,\n)",
+        "spacing": "(\n    space_none: 0,\n    space_xxxs: 4,\n    space_xxs: 8,\n    space_xs: 12,\n    space_s: 16,\n    space_m: 24,\n    space_l: 32,\n    space_xl: 48,\n    space_xxl: 64,\n    space_xxxl: 128,\n)",
+        "success": "(\n    base: \"#5EDB8CFF\",\n    hover: \"#5FC384FF\",\n    pressed: \"#3A7851FF\",\n    selected: \"#5FC384FF\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#000000FF\",\n    on: \"#000000FF\",\n    disabled: \"#5EDB8CFF\",\n    on_disabled: \"#2F6E46FF\",\n    border: \"#5EDB8CFF\",\n    disabled_border: \"#5EDB8C80\",\n)",
+        "success_button": "(\n    base: \"#5EDB8CFF\",\n    hover: \"#5FC384FF\",\n    pressed: \"#3A7851FF\",\n    selected: \"#5FC384FF\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#030303FF\",\n    on: \"#000000FF\",\n    disabled: \"#5EDB8CFF\",\n    on_disabled: \"#00000080\",\n    border: \"#5EDB8CFF\",\n    disabled_border: \"#5EDB8C80\",\n)",
+        "text_button": "(\n    base: \"#00000000\",\n    hover: \"#63636333\",\n    pressed: \"#16161680\",\n    selected: \"#63636333\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#63D0DF33\",\n    on: \"#63D0DFFF\",\n    disabled: \"#00000000\",\n    on_disabled: \"#63D0DFA6\",\n    border: \"#BEBEBEFF\",\n    disabled_border: \"#BEBEBE80\",\n)",
+        "text_tint": "None",
+        "transparent_background": "(\n    base: \"#1B1B1BC2\",\n    component: (\n        base: \"#2E2E2EC2\",\n        hover: \"#424242C8\",\n        pressed: \"#565656CE\",\n        selected: \"#424242C8\",\n        selected_text: \"#63D0DFFF\",\n        focus: \"#63D0DFFF\",\n        divider: \"#C0C0C033\",\n        on: \"#C0C0C0FF\",\n        disabled: \"#2E2E2E61\",\n        on_disabled: \"#C0C0C0A6\",\n        border: \"#BEBEBEFF\",\n        disabled_border: \"#BEBEBE80\",\n    ),\n    divider: \"#434343CE\",\n    on: \"#E7E7E7FF\",\n    small_widget: \"#27272740\",\n)",
+        "transparent_primary": "(\n    base: \"#272727FF\",\n    component: (\n        base: \"#363636FF\",\n        hover: \"#363636FF\",\n        pressed: \"#363636FF\",\n        selected: \"#363636FF\",\n        selected_text: \"#63D0DFFF\",\n        focus: \"#63D0DFFF\",\n        divider: \"#CACACA33\",\n        on: \"#CACACAFF\",\n        disabled: \"#36363680\",\n        on_disabled: \"#CACACAA6\",\n        border: \"#BEBEBEFF\",\n        disabled_border: \"#BEBEBE80\",\n    ),\n    divider: \"#515151FF\",\n    on: \"#F8F8F8FF\",\n    small_widget: \"#34343440\",\n)",
+        "transparent_secondary": "(\n    base: \"#343434FF\",\n    component: (\n        base: \"#3B3B3BFF\",\n        hover: \"#4F4F4FFF\",\n        pressed: \"#626262FF\",\n        selected: \"#4F4F4FFF\",\n        selected_text: \"#63D0DFFF\",\n        focus: \"#63D0DFFF\",\n        divider: \"#D0D0D033\",\n        on: \"#D0D0D0FF\",\n        disabled: \"#3B3B3B80\",\n        on_disabled: \"#D0D0D0A6\",\n        border: \"#BEBEBEFF\",\n        disabled_border: \"#BEBEBE80\",\n    ),\n    divider: \"#515151FF\",\n    on: \"#C7C7C7FF\",\n    small_widget: \"#41414140\",\n)",
+        "warning": "(\n    base: \"#FFA37DFF\",\n    hover: \"#E09678FF\",\n    pressed: \"#8A5C49FF\",\n    selected: \"#E09678FF\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#000000FF\",\n    on: \"#000000FF\",\n    disabled: \"#FFA37DFF\",\n    on_disabled: \"#80523FFF\",\n    border: \"#FFA37DFF\",\n    disabled_border: \"#FFA37D80\",\n)",
+        "warning_button": "(\n    base: \"#FFA37DFF\",\n    hover: \"#E09678FF\",\n    pressed: \"#8A5C49FF\",\n    selected: \"#E09678FF\",\n    selected_text: \"#63D0DFFF\",\n    focus: \"#63D0DFFF\",\n    divider: \"#FFFFFFFF\",\n    on: \"#000000FF\",\n    disabled: \"#FFA37DFF\",\n    on_disabled: \"#00000080\",\n    border: \"#FFA37DFF\",\n    disabled_border: \"#FFA37D80\",\n)",
+        "window_hint": "None"
+      },
+      "operation": "write",
+      "version": 2,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicPanel.Dock",
+      "entries": {
+        "anchor": "Bottom",
+        "anchor_gap": "true",
+        "autohide": "Never",
+        "autohide_behavior": "(\n    wait_time: 1000,\n    transition_time: 200,\n    handle_size: 4,\n    unhide_delay: 200,\n)",
+        "autohover_delay_ms": "Some(500)",
+        "background": "ThemeDefault",
+        "border_radius": "2",
+        "exclusive_zone": "true",
+        "expand_to_edges": "false",
+        "keep_style_on_maximize": "false",
+        "keyboard_interactivity": "OnDemand",
+        "layer": "Top",
+        "margin": "4",
+        "name": "\"Dock\"",
+        "opacity": "1.0",
+        "output": "All",
+        "padding": "0",
+        "padding_overlap": "0.5",
+        "plugins_center": "Some([\n    \"com.system76.CosmicPanelLauncherButton\",\n    \"com.system76.CosmicPanelWorkspacesButton\",\n    \"com.system76.CosmicPanelAppButton\",\n    \"com.system76.CosmicAppList\",\n    \"com.system76.CosmicAppletMinimize\",\n])",
+        "plugins_wings": "Some(([], []))",
+        "size": "L",
+        "size_center": "None",
+        "size_wings": "None",
+        "spacing": "0"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "config"
+    },
+    {
+      "component": "com.system76.CosmicInitialSetup",
+      "entries": {
+        "selected_location": "(\n    city_name: \"Osnabrück\",\n    timezone: \"Europe/Berlin\",\n    latitude: 52.27264,\n    longitude: 8.0498,\n)"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "state"
+    },
+    {
+      "component": "com.system76.CosmicSettingsDaemon",
+      "entries": {
+        "default_sink_name": "\"alsa_output.pci-0000_00_1f.3.analog-stereo\""
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "state"
+    },
+    {
+      "component": "com.system76.CosmicSettings",
+      "entries": {
+        "active_page": "\"time\""
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "state"
+    },
+    {
+      "component": "com.system76.CosmicBackground",
+      "entries": {
+        "wallpapers": "[\n    (\"eDP-1\", Path(\"/usr/share/backgrounds/cosmic/phytoplankton_bloom_nasa_oli2_20240121.jpg\")),\n]"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "state"
+    },
+    {
+      "component": "com.system76.CosmicFiles",
+      "entries": {
+        "sort_names": "{\n    \"/home/jannis/Downloads/\": (Modified, false),\n}"
+      },
+      "operation": "write",
+      "version": 1,
+      "xdg_directory": "state"
+    }
+  ]
+}

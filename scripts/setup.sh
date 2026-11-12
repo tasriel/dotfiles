@@ -18,6 +18,8 @@ STEPS=(
     "install_base.sh"
     "stow.bash --yes"
     "install_rust.sh"
+    "install_cosmic-ctl.sh"
+    "cosmic_restore.sh"
     "install_zsh.sh"
     "install_fzf.sh"
     "install_fnm.sh"

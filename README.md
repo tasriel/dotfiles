@@ -56,6 +56,8 @@ Useful variations:
 | latex | `install_latex.sh` | latexmk, biber, XeTeX/LuaTeX, German and English language support (about 1 GB); `LATEX_FULL=1 setup.sh latex` installs `texlive-full` instead |
 | platformio | `install_platformio.sh` | Also adds the udev rules and the `dialout` group, so log out and in once |
 | nerd-font, wallpaper | `setup_*.sh` | JetBrains Mono Nerd Font (per user), dynamic wallpaper |
+| cosmic-ctl | `install_cosmic-ctl.sh` | Builds [cosmic-ctl](https://github.com/cosmic-utils/cosmic-ctl) with cargo (no apt package exists) |
+| cosmic_restore | `cosmic_restore.sh` | Applies the saved COSMIC settings, skipped if none are saved yet (see [COSMIC settings](#cosmic-settings)) |
 
 Everything comes from apt wherever Ubuntu 24.04 (or the vendor's own apt repository) has a recent enough version.
 The exceptions are Neovim (apt has 0.9, the config needs 0.12), lazygit (not in Ubuntu 24.04), fzf (apt is too old for `fzf --zsh`),
@@ -86,6 +88,19 @@ X11-only tools were replaced:
 
 The configs for i3, polybar and dunst stay in the repo but are not linked (see `.stow-local-ignore`).
 The old i3 installer was moved to [`scripts/legacy/install_i3.sh`](./scripts/legacy/install_i3.sh) and is not part of `setup.sh`.
+
+## COSMIC settings
+
+COSMIC stores its settings as text files in `~/.config/cosmic`. They are not symlinked with Stow, because a Stow link would not follow settings that COSMIC rewrites.
+Instead, [cosmic-ctl](https://github.com/cosmic-utils/cosmic-ctl) exports all settings to one JSON file, [`cosmic/cosmic-config.json`](./cosmic/cosmic-config.json):
+
+```bash
+~/dotfiles/scripts/cosmic_save.sh       # export the current settings into the repo, then review git diff and commit
+~/dotfiles/scripts/cosmic_restore.sh    # apply the saved settings (also part of setup.sh)
+```
+
+The export contains every setting, including machine-specific ones such as the monitor layout and wallpaper paths.
+Check the diff before you commit and restore it on the other machine to see if it fits.
 
 ## Dynamic Wallpaper
 
