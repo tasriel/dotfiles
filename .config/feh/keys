@@ -1,6 +1,4 @@
-reload_plus # unset
-reload_minus # unset
-
+# Zoom und Navigation
 zoom_in plus
 zoom_out minus
 zoom_fit a
@@ -13,8 +11,11 @@ scroll_right l
 next_img J
 prev_img K
 
-reload_image # unset
 orient_1 r
 orient_3 R
-
 toggle_info i
+
+# Deaktivierte / Nicht belegte Befehle (Kommentare müssen ganz am Anfang stehen)
+# reload_plus
+# reload_minus
+# reload_image

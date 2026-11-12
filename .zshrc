@@ -6,6 +6,7 @@ export LC_ALL=de_DE.UTF-8
 
 # paths
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/env:$PATH"
 export PATH="/usr/local/texlive/2025/bin/x86_64-linux:$PATH" # texlive
 export CONDARC="$HOME/.config/conda/.condarc"
 

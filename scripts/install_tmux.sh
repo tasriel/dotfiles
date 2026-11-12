@@ -1,13 +1,19 @@
 #!/bin/bash
 
-# tokyo night theme (https://github.com/janoamaral/tokyo-night-tmux)
-sudo apt install bash bc coreutils gawk git jq playerctl
+set -e
 
-# clone tpm repo
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# Abhängigkeiten und tmux selbst installieren
+sudo apt update
+sudo apt install -y tmux bc coreutils gawk git jq playerctl
 
-# install plugins
-~/.tmux/plugins/tpm/bindings/install_plugins
+# Klonen des Tmux Plugin Managers (TPM)
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
-# reload tmux config
-tmux source $HOME/.config/tmux/tmux.conf
+# Temporären tmux-Server starten, damit TPM die Plugins im Hintergrund installieren kann
+tmux new-session -d -s tpm_install_session || true
+"$HOME/.tmux/plugins/tpm/bindings/install_plugins" || true
+tmux kill-session -t tpm_install_session 2>/dev/null || true
+
+echo "Tmux und TPM erfolgreich eingerichtet."
