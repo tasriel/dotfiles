@@ -18,8 +18,6 @@ STEPS=(
     "install_base.sh"
     "stow.bash --yes"
     "install_rust.sh"
-    "install_cosmic-ctl.sh"
-    "cosmic_restore.sh"
     "install_zsh.sh"
     "install_fzf.sh"
     "install_fnm.sh"
@@ -34,8 +32,6 @@ STEPS=(
     "install_zulip.sh"
     "install_element-x.sh"
     "install_claude.sh"
-    "install_thunderbird.sh"
-    "install_latex.sh"
     "install_platformio.sh"
     "setup_nerd-font.sh"
     "setup_wallpaper.sh"
@@ -75,6 +71,11 @@ sudo -v || exit 1
 (while kill -0 "$$" 2>/dev/null; do sudo -n true; sleep 50; done) &
 keepalive_pid=$!
 trap 'kill "$keepalive_pid" 2>/dev/null' EXIT
+
+# Update apt once; a broken repository must not stop the setup.
+# The steps skip their own update because of this flag.
+sudo apt-get update || echo "WARN: apt update had errors, continuing with cached package lists" >&2
+export DOTFILES_APT_UPDATED=1
 
 mkdir -p "$LOG_DIR"
 succeeded=()

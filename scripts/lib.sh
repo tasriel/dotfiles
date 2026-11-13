@@ -22,12 +22,19 @@ load_user_paths() {
     export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/fnm:$PATH"
 }
 
-# Refresh the apt index if it is older than one day
+# Refresh the apt index at most once per run, and only if it is older than one day.
+# A broken third-party repo makes "apt-get update" exit non-zero,
+# so a failure is only a warning and the cached package lists are used.
 apt_update_if_stale() {
+    if [[ ${DOTFILES_APT_UPDATED:-0} == 1 ]]; then
+        return 0
+    fi
     local stamp=/var/lib/apt/periodic/update-success-stamp
     if [[ ! -e $stamp ]] || [[ -n $(find "$stamp" -mmin +1440) ]]; then
-        sudo apt-get update
+        sudo apt-get update \
+            || warn "apt update reported errors (e.g. an unreachable repository), using the cached package lists"
     fi
+    DOTFILES_APT_UPDATED=1
 }
 
 # Install packages without prompts (already installed packages are skipped by apt)

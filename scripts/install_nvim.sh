@@ -10,7 +10,8 @@ NVIM_VERSION="${NVIM_VERSION:-v0.12.6}"
 install_dir="$HOME/apps/neovim"
 
 load_user_paths
-apt_install git make unzip gcc ripgrep fd-find wl-clipboard fonts-noto-color-emoji
+# python3-venv and python3-pip: Mason installs Python-based LSP servers (e.g. basedpyright) into a venv
+apt_install git make unzip gcc ripgrep fd-find wl-clipboard fonts-noto-color-emoji python3-venv python3-pip
 
 installed_version=$(nvim --version 2>/dev/null | head -n 1 || true)
 if [[ $installed_version == *"$NVIM_VERSION"* ]]; then

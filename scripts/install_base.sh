@@ -10,7 +10,6 @@ package_file="$DOTFILES_DIR/packages/apt.txt"
 mapfile -t packages < <(sed -e 's/#.*//' -e 's/[[:space:]]*$//' -e '/^$/d' "$package_file")
 
 log "Installing ${#packages[@]} apt packages"
-sudo apt-get update
 apt_install "${packages[@]}"
 
 # Ubuntu calls the binary "fdfind"; link it so yazi and telescope find "fd"

@@ -47,23 +47,15 @@ Useful variations:
 |---|---|---|
 | base | [`install_base.sh`](./scripts/install_base.sh) | Installs everything in [`packages/apt.txt`](./packages/apt.txt) with one apt call |
 | stow | [`stow.bash`](./scripts/stow.bash) | Symlinks the dotfiles into `$HOME` (dry run first, aborts on conflicts) |
-| rust | `install_rust.sh` | `rustup` from apt, then `rustup default stable` (the apt `rustc` is too old) |
-| yazi | `install_yazi.sh` | Official release `.deb`, installed with apt (not in the Ubuntu repos) |
-| nvim | `install_nvim.sh` | Official release tarball, plus tree-sitter-cli via cargo-binstall |
+| rust, yazi, nvim | `install_rust.sh`, `install_yazi.sh`, `install_nvim.sh` | Prebuilt binaries via cargo-binstall and the Neovim release tarball, nothing is compiled |
 | zsh, fzf, fnm, lazygit, tmux, wezterm, vlc, feh | `install_*.sh` | Individual tools |
 | spotify, zulip, element-x, claude | `install_*.sh` | Third-party apt repositories, each trusted only for its own packages |
-| thunderbird | `install_thunderbird.sh` | .deb from the Ubuntu Mozilla Team PPA (the package in the Ubuntu archive is only a snap stub), pinned so apt prefers the PPA |
-| latex | `install_latex.sh` | latexmk, biber, XeTeX/LuaTeX, German and English language support (about 1 GB); `LATEX_FULL=1 setup.sh latex` installs `texlive-full` instead |
 | platformio | `install_platformio.sh` | Also adds the udev rules and the `dialout` group, so log out and in once |
 | nerd-font, wallpaper | `setup_*.sh` | JetBrains Mono Nerd Font (per user), dynamic wallpaper |
-| cosmic-ctl | `install_cosmic-ctl.sh` | Builds [cosmic-ctl](https://github.com/cosmic-utils/cosmic-ctl) with cargo (no apt package exists) |
-| cosmic_restore | `cosmic_restore.sh` | Applies the saved COSMIC settings, skipped if none are saved yet (see [COSMIC settings](#cosmic-settings)) |
-
-Everything comes from apt wherever Ubuntu 24.04 (or the vendor's own apt repository) has a recent enough version.
-The exceptions are Neovim (apt has 0.9, the config needs 0.12), lazygit (not in Ubuntu 24.04), fzf (apt is too old for `fzf --zsh`),
-fnm, Oh My Zsh with its plugins, sunwait, the Nerd Font and tree-sitter-cli (apt version too old).
 
 Shared helpers (apt repositories, GitHub release lookup, PATH handling) live in [`scripts/lib.sh`](./scripts/lib.sh).
+
+`apt-get update` runs at most once per `setup.sh` run. If a third-party repository is unreachable, the update only prints a warning and the steps continue with the cached package lists.
 All scripts can be run again safely.
 To add a package, add a line to `packages/apt.txt`; to add a tool, add a script and list it in `setup.sh`.
 
@@ -88,19 +80,6 @@ X11-only tools were replaced:
 
 The configs for i3, polybar and dunst stay in the repo but are not linked (see `.stow-local-ignore`).
 The old i3 installer was moved to [`scripts/legacy/install_i3.sh`](./scripts/legacy/install_i3.sh) and is not part of `setup.sh`.
-
-## COSMIC settings
-
-COSMIC stores its settings as text files in `~/.config/cosmic`. They are not symlinked with Stow, because a Stow link would not follow settings that COSMIC rewrites.
-Instead, [cosmic-ctl](https://github.com/cosmic-utils/cosmic-ctl) exports all settings to one JSON file, [`cosmic/cosmic-config.json`](./cosmic/cosmic-config.json):
-
-```bash
-~/dotfiles/scripts/cosmic_save.sh       # export the current settings into the repo, then review git diff and commit
-~/dotfiles/scripts/cosmic_restore.sh    # apply the saved settings (also part of setup.sh)
-```
-
-The export contains every setting, including machine-specific ones such as the monitor layout and wallpaper paths.
-Check the diff before you commit and restore it on the other machine to see if it fits.
 
 ## Dynamic Wallpaper
 
