@@ -15,10 +15,12 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 ZSH_DISABLE_COMPFIX="true"
 
+export SSH_AUTH_SOCK=/home/jannis/.bitwarden-ssh-agent.sock
+
 # zsh plugins
 plugins=(
 	git
-	ssh-agent
+	# ssh-agent
 
 	# keep at the bottom
 	zsh-completions
