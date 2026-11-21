@@ -713,6 +713,7 @@ require('lazy').setup({
             '--query-driver=**/*g++*,**/*gcc*',
           },
         },
+        texlab = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
